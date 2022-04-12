@@ -1,0 +1,616 @@
+2022/04/09 12:13:24.981  [I] [server.go:238]  http server Running on http://:8080
+2022/04/09 12:13:40.710  [D] [router.go:1272]  |      127.0.0.1|[42m 200 [0m|    17.2626ms|   match|[46m POST    [0m /api/v1/user/add   r:/api/v1/user/add
+2022/04/09 12:18:04.180  [I] [server.go:238]  http server Running on http://:8080
+2022/04/09 12:20:48.540  [D] [router.go:1272]  |      127.0.0.1|[42m 200 [0m|     6.8818ms|   match|[46m POST    [0m /api/v1/user/add   r:/api/v1/user/add
+2022/04/09 12:26:01.479  [I] [server.go:238]  http server Running on http://:8080
+2022/04/09 12:26:34.822  [D] [router.go:1272]  |      127.0.0.1|[42m 200 [0m|     5.3741ms|   match|[46m POST    [0m /api/v1/user/add   r:/api/v1/user/add
+2022/04/09 12:45:08.970  [I] [server.go:238]  http server Running on http://:8080
+2022/04/09 12:45:42.055  [D] [router.go:1272]  |      127.0.0.1|[43m 404 [0m|      633.2µs| nomatch|[46m POST    [0m /api/v1/user/add
+2022/04/09 12:46:09.827  [I] [server.go:238]  http server Running on http://:8080
+2022/04/09 12:47:38.179  [I] [server.go:238]  http server Running on http://:8080
+2022/04/09 12:48:14.272  [I] [server.go:238]  http server Running on http://:8080
+2022/04/09 13:01:51.159  [I] [server.go:238]  http server Running on http://:8080
+2022/04/09 13:02:07.707  [D] [router.go:1272]  |      127.0.0.1|[43m 405 [0m|      574.2µs|   match|[46m POST    [0m /api/v1/user/add   r:/api/v1/user/add
+2022/04/09 13:05:16.787  [I] [server.go:238]  http server Running on http://:8080
+2022/04/09 13:05:18.855  [I] [user.go:30]  [AddUser] u.Ctx.Input.RequestBody: {
+    "username": "test_张三",
+    "password": "a1234567",
+    "number": "A19180123"
+}
+
+2022/04/09 13:05:18.855  [I] [user.go:31]  [AddUser] user: {0 test_张三 A19180123 a1234567 0 0 0}
+
+2022/04/09 13:05:18.880  [E] [user.go:35]  [AddUser] bizuser.AddUser, err: Error 1062: Duplicate entry 'A19180123' for key 'user.idx_number'
+2022/04/09 13:05:18.883  [D] [router.go:1272]  |      127.0.0.1|[42m 200 [0m|    28.4563ms|   match|[46m POST    [0m /api/v1/user/add   r:/api/v1/user/add
+2022/04/10 08:21:30.895  [I] [server.go:238]  http server Running on http://:8080
+2022/04/10 08:25:00.277  [I] [user.go:80]  [UpdateUser] u.Ctx.Input.RequestBody: {
+    "username": "test_张三",
+    "password": "a1234567",
+    "number": "A19180123",
+    "is_admin": 1
+}
+
+2022/04/10 08:25:00.277  [I] [user.go:81]  [UpdateUser] req: {0 test_张三 A19180123 a1234567 0 1 0}
+
+2022/04/10 08:25:00.278  [E] [user.go:84]  [UpdateUser] bizuser.UpdateUser, err: param is incorrect
+
+2022/04/10 08:25:00.280  [D] [router.go:1272]  |      127.0.0.1|[42m 200 [0m|     2.4323ms|   match|[46m POST    [0m /api/v1/user/update   r:/api/v1/user/update
+2022/04/10 08:25:51.629  [I] [server.go:238]  http server Running on http://:8080
+2022/04/10 08:25:54.372  [I] [server.go:238]  http server Running on http://:8080
+2022/04/10 08:25:59.962  [I] [server.go:238]  http server Running on http://:8080
+2022/04/10 08:26:13.005  [I] [server.go:238]  http server Running on http://:8080
+2022/04/10 08:27:17.286  [I] [user.go:80]  [UpdateUser] u.Ctx.Input.RequestBody: {
+    "id": 1,
+    "username": "test_张三",
+    "password": "a1234567",
+    "number": "A19180123",
+    "is_admin": 1
+}
+
+2022/04/10 08:27:17.286  [I] [user.go:81]  [UpdateUser] req: {1 test_张三 A19180123 a1234567 0 1 0}
+
+2022/04/10 08:27:17.297  [E] [user.go:84]  [UpdateUser] bizuser.UpdateUser, err: Error 1048: Column 'created_at' cannot be null
+
+2022/04/10 08:27:17.297  [D] [router.go:1272]  |      127.0.0.1|[42m 200 [0m|    10.6828ms|   match|[46m POST    [0m /api/v1/user/update   r:/api/v1/user/update
+2022/04/10 08:32:08.035  [I] [server.go:238]  http server Running on http://:8080
+2022/04/10 08:32:09.954  [I] [server.go:238]  http server Running on http://:8080
+2022/04/10 08:32:20.751  [I] [server.go:238]  http server Running on http://:8080
+2022/04/10 08:32:30.859  [I] [user.go:80]  [UpdateUser] u.Ctx.Input.RequestBody: {
+    "id": 1,
+    "username": "test_张三",
+    "password": "a1234567",
+    "number": "A19180123",
+    "is_admin": 1
+}
+
+2022/04/10 08:32:30.859  [I] [user.go:81]  [UpdateUser] req: {1 test_张三 A19180123 a1234567 0 1 0}
+
+2022/04/10 08:32:30.861  [C] [config.go:500]  the request url is  /api/v1/user/update
+2022/04/10 08:32:30.862  [C] [config.go:501]  Handler crashed with error <Ormer> cannot use non-ptr model struct `.`
+2022/04/10 08:32:30.862  [C] [config.go:507]  D:/Program Files/Go/src/runtime/panic.go:838
+2022/04/10 08:32:30.862  [C] [config.go:507]  D:/goproject/pkg/mod/github.com/astaxie/beego@v1.12.3/orm/orm.go:108
+2022/04/10 08:32:30.862  [C] [config.go:507]  D:/goproject/pkg/mod/github.com/astaxie/beego@v1.12.3/orm/orm.go:236
+2022/04/10 08:32:30.862  [C] [config.go:507]  D:/goproject/src/libo.explorer/dataStructLearningWeb/dao/daouser/daouser.go:62
+2022/04/10 08:32:30.862  [C] [config.go:507]  D:/goproject/src/libo.explorer/dataStructLearningWeb/biz/bizuser/user.go:67
+2022/04/10 08:32:30.862  [C] [config.go:507]  D:/goproject/src/libo.explorer/dataStructLearningWeb/controllers/user.go:83
+2022/04/10 08:32:30.862  [C] [config.go:507]  D:/Program Files/Go/src/reflect/value.go:556
+2022/04/10 08:32:30.862  [C] [config.go:507]  D:/Program Files/Go/src/reflect/value.go:339
+2022/04/10 08:32:30.862  [C] [config.go:507]  D:/goproject/pkg/mod/github.com/beego/beego/v2@v2.0.2/server/web/router.go:1200
+2022/04/10 08:32:30.862  [C] [config.go:507]  D:/goproject/pkg/mod/github.com/beego/beego/v2@v2.0.2/server/web/filter.go:83
+2022/04/10 08:32:30.862  [C] [config.go:507]  D:/goproject/pkg/mod/github.com/beego/beego/v2@v2.0.2/server/web/router.go:973
+2022/04/10 08:32:30.862  [C] [config.go:507]  D:/Program Files/Go/src/net/http/server.go:2916
+2022/04/10 08:32:30.862  [C] [config.go:507]  D:/Program Files/Go/src/net/http/server.go:1966
+2022/04/10 08:32:30.862  [C] [config.go:507]  D:/Program Files/Go/src/runtime/asm_amd64.s:1571
+2022/04/10 08:34:31.671  [I] [server.go:238]  http server Running on http://:8080
+2022/04/10 08:35:21.617  [I] [server.go:238]  http server Running on http://:8080
+2022/04/10 08:35:28.080  [I] [user.go:80]  [UpdateUser] u.Ctx.Input.RequestBody: {
+    "id": 1,
+    "username": "test_张三",
+    "password": "a1234567",
+    "number": "A19180123",
+    "is_admin": 1
+}
+
+2022/04/10 08:35:28.080  [I] [user.go:81]  [UpdateUser] req: {1 test_张三 A19180123 a1234567 0 1 0}
+
+2022/04/10 08:35:28.130  [D] [router.go:1272]  |      127.0.0.1|[42m 200 [0m|    50.3353ms|   match|[46m POST    [0m /api/v1/user/update   r:/api/v1/user/update
+2022/04/10 08:39:39.973  [I] [server.go:238]  http server Running on http://:8080
+2022/04/10 08:39:48.869  [I] [user.go:80]  [UpdateUser] u.Ctx.Input.RequestBody: {
+    "id": 1,
+    "username": "test_张三",
+    "password": "a1234567",
+    "number": "A19180123",
+    "is_admin": 1
+}
+
+2022/04/10 08:39:48.869  [I] [user.go:81]  [UpdateUser] req: {1 test_张三 A19180123 a1234567 0 1 0}
+
+2022/04/10 08:39:48.879  [D] [router.go:1272]  |      127.0.0.1|[42m 200 [0m|     10.654ms|   match|[46m POST    [0m /api/v1/user/update   r:/api/v1/user/update
+2022/04/10 13:23:05.948  [I] [server.go:238]  http server Running on http://:8080
+2022/04/10 13:26:21.140  [I] [server.go:238]  http server Running on http://:8080
+2022/04/10 13:26:30.519  [I] [server.go:238]  http server Running on http://:8080
+2022/04/10 13:26:37.686  [I] [server.go:238]  http server Running on http://:8080
+2022/04/10 13:26:42.953  [I] [server.go:238]  http server Running on http://:8080
+2022/04/10 13:26:49.792  [I] [server.go:238]  http server Running on http://:8080
+2022/04/10 13:27:12.311  [I] [server.go:238]  http server Running on http://:8080
+2022/04/10 15:22:40.613  [I] [server.go:238]  http server Running on http://:8080
+2022/04/10 15:48:15.424  [I] [server.go:238]  http server Running on http://:8080
+2022/04/10 16:13:07.423  [I] [server.go:238]  http server Running on http://:8080
+2022/04/10 16:16:27.438  [I] [server.go:238]  http server Running on http://:8080
+2022/04/10 16:16:53.762  [I] [server.go:238]  http server Running on http://:8080
+2022/04/10 16:57:33.283  [I] [server.go:238]  http server Running on http://:8080
+2022/04/10 18:07:12.602  [I] [server.go:238]  http server Running on http://:8080
+2022/04/10 18:09:23.472  [I] [server.go:238]  http server Running on http://:8080
+2022/04/10 21:19:55.580  [I] [server.go:238]  http server Running on http://:8080
+2022/04/10 21:20:01.792  [I] [server.go:238]  http server Running on http://:8080
+2022/04/10 21:30:42.501  [I] [server.go:238]  http server Running on http://:8080
+2022/04/10 21:31:05.007  [I] [server.go:238]  http server Running on http://:8080
+2022/04/10 21:37:06.262  [I] [server.go:238]  http server Running on http://:8080
+2022/04/10 21:47:44.610  [I] [server.go:238]  http server Running on http://:8080
+2022/04/10 21:48:20.016  [I] [server.go:238]  http server Running on http://:8080
+2022/04/10 21:48:21.269  [I] [server.go:238]  http server Running on http://:8080
+2022/04/10 21:48:23.302  [I] [server.go:238]  http server Running on http://:8080
+2022/04/10 21:50:11.156  [C] [config.go:500]  the request url is  /api/v1/user/query
+2022/04/10 21:50:11.156  [C] [config.go:501]  Handler crashed with error runtime error: index out of range [1] with length 1
+2022/04/10 21:50:11.157  [C] [config.go:507]  D:/Program Files/Go/src/runtime/panic.go:838
+2022/04/10 21:50:11.157  [C] [config.go:507]  D:/Program Files/Go/src/runtime/panic.go:89
+2022/04/10 21:50:11.157  [C] [config.go:507]  D:/goproject/src/libo.explorer/dataStructLearningWeb/controllers/user.go:33
+2022/04/10 21:50:11.157  [C] [config.go:507]  D:/goproject/pkg/mod/github.com/beego/beego/v2@v2.0.2/server/web/router.go:1163
+2022/04/10 21:50:11.157  [C] [config.go:507]  D:/goproject/pkg/mod/github.com/beego/beego/v2@v2.0.2/server/web/filter.go:83
+2022/04/10 21:50:11.157  [C] [config.go:507]  D:/goproject/pkg/mod/github.com/beego/beego/v2@v2.0.2/server/web/router.go:973
+2022/04/10 21:50:11.157  [C] [config.go:507]  D:/Program Files/Go/src/net/http/server.go:2916
+2022/04/10 21:50:11.157  [C] [config.go:507]  D:/Program Files/Go/src/net/http/server.go:1966
+2022/04/10 21:50:11.157  [C] [config.go:507]  D:/Program Files/Go/src/runtime/asm_amd64.s:1571
+2022/04/10 21:50:11.157  [M] [log.go:205]  [HTTP] http: superfluous response.WriteHeader call from github.com/beego/beego/v2/server/web/context.(*Response).WriteHeader (context.go:366)
+2022/04/10 22:02:31.206  [I] [server.go:238]  http server Running on http://:8080
+2022/04/10 22:06:11.346  [D] [router.go:1272]  |      127.0.0.1|[43m 404 [0m|      746.8µs| nomatch|[46m POST    [0m /api/v1/user/login
+2022/04/10 22:06:41.786  [I] [server.go:238]  http server Running on http://:8080
+2022/04/10 22:06:47.239  [I] [server.go:238]  http server Running on http://:8080
+2022/04/10 22:07:18.175  [I] [server.go:238]  http server Running on http://:8080
+2022/04/10 22:10:52.140  [I] [server.go:238]  http server Running on http://:8080
+2022/04/10 22:12:48.365  [E] [login.go:29]  [Login] bizuser.Login, err: param is incorrect, number: 
+2022/04/10 22:13:40.003  [E] [login.go:29]  [Login] bizuser.Login, err: param is incorrect, number: 
+2022/04/10 22:19:47.309  [I] [server.go:238]  http server Running on http://:8080
+2022/04/10 22:19:51.343  [I] [server.go:238]  http server Running on http://:8080
+2022/04/10 22:19:53.169  [I] [server.go:238]  http server Running on http://:8080
+2022/04/10 22:19:55.819  [I] [login.go:30]  [Login] u.Ctx.Input.RequestBody: {
+    "number": "A19180123",
+    "password": "a1234567"
+}
+
+2022/04/10 22:19:55.819  [I] [login.go:31]  [Login] req: {A19180123 a1234567}
+
+2022/04/10 22:19:56.309  [I] [server.go:238]  http server Running on http://:8080
+2022/04/10 22:19:59.005  [I] [server.go:238]  http server Running on http://:8080
+2022/04/10 22:20:07.849  [I] [server.go:238]  http server Running on http://:8080
+2022/04/10 22:20:40.098  [I] [login.go:30]  [Login] u.Ctx.Input.RequestBody: {
+    "number": "A19180123",
+    "password": "a1234567"
+}
+
+2022/04/10 22:20:40.098  [I] [login.go:31]  [Login] req: {A19180123 a1234567}
+
+2022/04/10 22:20:40.105  [E] [login.go:35]  [Login] bizuser.Login, err: <QuerySeter> no row found, number: A19180123
+2022/04/10 22:23:27.242  [I] [server.go:238]  http server Running on http://:8080
+2022/04/10 22:24:15.075  [I] [login.go:30]  [Login] u.Ctx.Input.RequestBody: {
+    "number": "A19180123",
+    "password": "a1234567"
+}
+
+2022/04/10 22:24:15.075  [I] [login.go:31]  [Login] req: {A19180123 a1234567}
+
+2022/04/10 22:24:15.084  [E] [redis.go:58]  [GetInt64] redisCache.Get, err: redis: nil, key: datastructLearningWeb:login:user_id 1
+2022/04/10 22:24:15.085  [E] [login.go:35]  [Login] bizuser.Login, err: redis: nil, number: A19180123
+2022/04/10 22:35:39.292  [I] [server.go:238]  http server Running on http://:8080
+2022/04/10 22:35:51.632  [I] [login.go:30]  [Login] u.Ctx.Input.RequestBody: {
+    "number": "A19180123",
+    "password": "a1234567"
+}
+
+2022/04/10 22:35:51.632  [I] [login.go:31]  [Login] req: {A19180123 a1234567}
+
+2022/04/10 22:35:51.637  [E] [redis.go:49]  [GetStr] redisCache.Get, err: redis: nil, key: datastructLearningWeb:login:user_id 1
+2022/04/10 22:35:51.640  [E] [login.go:35]  [Login] bizuser.Login, err: redis: nil, number: A19180123
+2022/04/10 22:46:36.775  [I] [server.go:238]  http server Running on http://:8080
+2022/04/10 22:46:42.964  [I] [login.go:30]  [Login] u.Ctx.Input.RequestBody: {
+    "number": "A19180123",
+    "password": "a1234567"
+}
+
+2022/04/10 22:46:42.964  [I] [login.go:31]  [Login] req: {A19180123 a1234567}
+
+2022/04/10 22:46:42.967  [E] [redis.go:58]  [GetInt64] redisCache.Get, err: redis: nil, key: datastructLearningWeb:login:user_id 1
+2022/04/10 22:46:42.969  [E] [login.go:35]  [Login] bizuser.Login, err: key is of invalid type, number: A19180123
+2022/04/10 22:48:35.616  [I] [login.go:30]  [Login] u.Ctx.Input.RequestBody: {
+    "number": "A19180123",
+    "password": "a1234567"
+}
+
+2022/04/10 22:48:35.616  [I] [login.go:31]  [Login] req: {A19180123 a1234567}
+
+2022/04/10 22:48:35.618  [E] [redis.go:58]  [GetInt64] redisCache.Get, err: redis: nil, key: datastructLearningWeb:login:user_id 1
+2022/04/10 22:48:35.620  [E] [login.go:35]  [Login] bizuser.Login, err: key is of invalid type, number: A19180123
+2022/04/10 22:48:59.149  [I] [server.go:238]  http server Running on http://:8080
+2022/04/10 22:49:00.034  [I] [server.go:238]  http server Running on http://:8080
+2022/04/10 22:49:01.730  [I] [server.go:238]  http server Running on http://:8080
+2022/04/10 22:54:37.466  [I] [server.go:238]  http server Running on http://:8080
+2022/04/10 22:54:39.831  [I] [login.go:30]  [Login] u.Ctx.Input.RequestBody: {
+    "number": "A19180123",
+    "password": "a1234567"
+}
+
+2022/04/10 22:54:39.831  [I] [login.go:31]  [Login] req: {A19180123 a1234567}
+
+2022/04/10 22:54:39.840  [E] [redis.go:58]  [GetInt64] redisCache.Get, err: redis: nil, key: datastructLearningWeb:login:user_id 1
+2022/04/10 22:54:39.893  [D] [router.go:1272]  |      127.0.0.1|[42m 200 [0m|    63.0222ms|   match|[46m POST    [0m /api/v1/user/login   r:/api/v1/user/login
+2022/04/10 22:55:56.597  [I] [server.go:238]  http server Running on http://:8080
+2022/04/10 22:56:25.200  [I] [server.go:238]  http server Running on http://:8080
+2022/04/10 22:57:43.678  [I] [login.go:30]  [Login] u.Ctx.Input.RequestBody: {
+    "number": "A19180123",
+    "password": "a1234567"
+}
+
+2022/04/10 22:57:43.678  [I] [login.go:31]  [Login] req: {A19180123 a1234567}
+
+2022/04/10 22:57:43.980  [D] [router.go:1272]  |      127.0.0.1|[42m 200 [0m|   301.9141ms|   match|[46m POST    [0m /api/v1/user/login   r:/api/v1/user/login
+2022/04/10 23:06:38.299  [I] [login.go:30]  [Login] u.Ctx.Input.RequestBody: {
+    "number": "A19180123",
+    "password": "a1234567"
+}
+
+2022/04/10 23:06:38.299  [I] [login.go:31]  [Login] req: {A19180123 a1234567}
+
+2022/04/10 23:06:38.303  [E] [redis.go:58]  [GetInt64] redisCache.Get, err: redis: nil, key: datastructLearningWeb:login:user_id 1
+2022/04/10 23:06:38.304  [D] [router.go:1272]  |      127.0.0.1|[42m 200 [0m|     5.5238ms|   match|[46m POST    [0m /api/v1/user/login   r:/api/v1/user/login
+2022/04/10 23:07:43.742  [I] [server.go:238]  http server Running on http://:8080
+2022/04/10 23:07:47.862  [I] [login.go:30]  [Login] u.Ctx.Input.RequestBody: {
+    "number": "A19180123",
+    "password": "a1234567"
+}
+
+2022/04/10 23:07:47.862  [I] [login.go:31]  [Login] req: {A19180123 a1234567}
+
+2022/04/10 23:07:47.869  [E] [redis.go:58]  [GetInt64] redisCache.Get, err: redis: nil, key: datastructLearningWeb:login:user_id 1
+2022/04/10 23:07:47.870  [D] [router.go:1272]  |      127.0.0.1|[42m 200 [0m|      8.955ms|   match|[46m POST    [0m /api/v1/user/login   r:/api/v1/user/login
+2022/04/10 23:08:33.120  [I] [server.go:238]  http server Running on http://:8080
+2022/04/10 23:08:41.404  [I] [server.go:238]  http server Running on http://:8080
+2022/04/10 23:08:45.204  [I] [server.go:238]  http server Running on http://:8080
+2022/04/10 23:08:51.148  [I] [server.go:238]  http server Running on http://:8080
+2022/04/10 23:09:08.294  [I] [server.go:238]  http server Running on http://:8080
+2022/04/10 23:09:15.968  [I] [login.go:30]  [Login] u.Ctx.Input.RequestBody: {
+    "number": "A19180123",
+    "password": "a1234567"
+}
+
+2022/04/10 23:09:15.968  [I] [login.go:31]  [Login] req: {A19180123 a1234567}
+
+2022/04/10 23:09:15.974  [E] [redis.go:58]  [GetInt64] redisCache.Get, err: redis: nil, key: datastructLearningWeb:login:user_id 1
+2022/04/10 23:09:15.975  [D] [router.go:1272]  |      127.0.0.1|[42m 200 [0m|     6.7908ms|   match|[46m POST    [0m /api/v1/user/login   r:/api/v1/user/login
+2022/04/10 23:09:40.916  [I] [login.go:30]  [Login] u.Ctx.Input.RequestBody: {
+    "number": "A19180123",
+    "password": "a1234567"
+}
+
+2022/04/10 23:09:40.916  [I] [login.go:31]  [Login] req: {A19180123 a1234567}
+
+2022/04/10 23:09:40.932  [D] [router.go:1272]  |      127.0.0.1|[42m 200 [0m|    16.4834ms|   match|[46m POST    [0m /api/v1/user/login   r:/api/v1/user/login
+2022/04/10 23:09:45.923  [I] [server.go:238]  http server Running on http://:8080
+2022/04/10 23:09:47.263  [I] [server.go:238]  http server Running on http://:8080
+2022/04/11 08:21:17.258  [I] [server.go:238]  http server Running on http://:8080
+2022/04/11 08:21:21.772  [I] [login.go:30]  [Login] u.Ctx.Input.RequestBody: {
+    "number": "A19180123",
+    "password": "a1234567"
+}
+
+2022/04/11 08:21:21.772  [I] [login.go:31]  [Login] req: {A19180123 a1234567}
+
+2022/04/11 08:21:21.776  [E] [redis.go:58]  [GetInt64] redisCache.Get, err: redis: nil, key: datastructLearningWeb:login:user_id 1
+2022/04/11 08:21:21.776  [D] [router.go:1272]  |      127.0.0.1|[42m 200 [0m|     5.8938ms|   match|[46m POST    [0m /api/v1/user/login   r:/api/v1/user/login
+2022/04/11 08:24:34.822  [I] [server.go:238]  http server Running on http://:8080
+2022/04/11 08:24:37.556  [I] [user.go:26]  bo
+2022/04/11 08:24:41.937  [I] [server.go:238]  http server Running on http://:8080
+2022/04/11 08:24:49.214  [I] [server.go:238]  http server Running on http://:8080
+2022/04/11 08:25:00.088  [I] [user.go:26]  bearToken: 
+2022/04/11 08:26:59.210  [I] [server.go:238]  http server Running on http://:8080
+2022/04/11 08:27:02.649  [I] [user.go:26]  bearToken: 
+2022/04/11 08:27:02.649  [I] [user.go:27]  [AddUser] u.Ctx.Input.RequestBody: 
+
+2022/04/11 08:31:38.849  [I] [server.go:238]  http server Running on http://:8080
+2022/04/11 08:31:43.337  [I] [user.go:26]  bearToken: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJRCI6MSwiVXNlcm5hbWUiOiJ0ZXN0X-W8oOS4iSIsImV4cCI6MTY0OTYzNjc4MSwiaXNzIjoibGliby5leHBsb3JlciJ9.9JAKXJpg-YD8fV6tr0dbQLym04z4YvoKymfyY30zj1g
+2022/04/11 08:31:43.337  [E] [user.go:63]  [parseToken] err: key is of invalid type
+2022/04/11 08:31:43.337  [I] [user.go:40]  [Prepare] err: key is of invalid type
+2022/04/11 08:32:42.148  [I] [server.go:238]  http server Running on http://:8080
+2022/04/11 08:33:02.882  [I] [user.go:26]  bearToken: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJRCI6MSwiVXNlcm5hbWUiOiJ0ZXN0X-W8oOS4iSIsImV4cCI6MTY0OTYzNjc4MSwiaXNzIjoibGliby5leHBsb3JlciJ9.9JAKXJpg-YD8fV6tr0dbQLym04z4YvoKymfyY30zj1g
+2022/04/11 08:33:02.882  [I] [user.go:36]  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJRCI6MSwiVXNlcm5hbWUiOiJ0ZXN0X-W8oOS4iSIsImV4cCI6MTY0OTYzNjc4MSwiaXNzIjoibGliby5leHBsb3JlciJ9.9JAKXJpg-YD8fV6tr0dbQLym04z4YvoKymfyY30zj1g
+2022/04/11 08:33:02.882  [E] [user.go:64]  [parseToken] err: key is of invalid type
+2022/04/11 08:33:02.882  [I] [user.go:41]  [Prepare] err: key is of invalid type
+2022/04/11 08:33:54.291  [I] [server.go:238]  http server Running on http://:8080
+2022/04/11 08:35:11.518  [I] [user.go:26]  bearToken: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJRCI6MSwiVXNlcm5hbWUiOiJ0ZXN0X-W8oOS4iSIsImV4cCI6MTY0OTYzNjc4MSwiaXNzIjoibGliby5leHBsb3JlciJ9.9JAKXJpg-YD8fV6tr0dbQLym04z4YvoKymfyY30zj1g
+2022/04/11 08:35:11.518  [I] [user.go:36]  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJRCI6MSwiVXNlcm5hbWUiOiJ0ZXN0X-W8oOS4iSIsImV4cCI6MTY0OTYzNjc4MSwiaXNzIjoibGliby5leHBsb3JlciJ9.9JAKXJpg-YD8fV6tr0dbQLym04z4YvoKymfyY30zj1g
+2022/04/11 08:35:11.518  [E] [user.go:64]  [parseToken] err: token is expired by 8m50s
+2022/04/11 08:35:11.518  [I] [user.go:41]  [Prepare] err: token is expired by 8m50s
+2022/04/11 08:39:43.713  [I] [server.go:238]  http server Running on http://:8080
+2022/04/11 08:40:00.343  [I] [user.go:25]  bearToken: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJRCI6MSwiVXNlcm5hbWUiOiJ0ZXN0X-W8oOS4iSIsImV4cCI6MTY0OTYzNjc4MSwiaXNzIjoibGliby5leHBsb3JlciJ9.9JAKXJpg-YD8fV6tr0dbQLym04z4YvoKymfyY30zj1g
+2022/04/11 08:40:00.343  [I] [user.go:35]  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJRCI6MSwiVXNlcm5hbWUiOiJ0ZXN0X-W8oOS4iSIsImV4cCI6MTY0OTYzNjc4MSwiaXNzIjoibGliby5leHBsb3JlciJ9.9JAKXJpg-YD8fV6tr0dbQLym04z4YvoKymfyY30zj1g
+2022/04/11 08:40:00.343  [E] [user.go:55]  [parseToken] err: token is expired by 13m39s
+2022/04/11 08:40:00.343  [I] [user.go:40]  [Prepare] err: token is expired by 13m39s
+2022/04/11 08:40:23.600  [I] [login.go:30]  [Login] u.Ctx.Input.RequestBody: {
+    "number": "A19180123",
+    "password": "a1234567"
+}
+
+2022/04/11 08:40:23.600  [I] [login.go:31]  [Login] req: {A19180123 a1234567}
+
+2022/04/11 08:40:23.605  [E] [redis.go:58]  [GetInt64] redisCache.Get, err: redis: nil, key: datastructLearningWeb:login:user_id 1
+2022/04/11 08:40:23.606  [D] [router.go:1272]  |      127.0.0.1|[42m 200 [0m|     5.1656ms|   match|[46m POST    [0m /api/v1/user/login   r:/api/v1/user/login
+2022/04/11 08:40:38.518  [I] [user.go:25]  bearToken: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJRCI6MSwiVXNlcm5hbWUiOiJ0ZXN0X-W8oOS4iSIsImV4cCI6MTY1MDI0MjQyMywiaXNzIjoibGliby5leHBsb3JlciJ9.8RIAnI2sRTU-08MgiUCUyPZoQNfXA2Uy3-YFNS98JHI
+2022/04/11 08:40:38.518  [I] [user.go:35]  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJRCI6MSwiVXNlcm5hbWUiOiJ0ZXN0X-W8oOS4iSIsImV4cCI6MTY1MDI0MjQyMywiaXNzIjoibGliby5leHBsb3JlciJ9.8RIAnI2sRTU-08MgiUCUyPZoQNfXA2Uy3-YFNS98JHI
+2022/04/11 08:40:38.518  [E] [user.go:66]  [parseToken] err: !ok || tokenClaims.Valid
+2022/04/11 08:40:38.518  [I] [user.go:40]  [Prepare] err: token无效
+2022/04/11 08:45:28.721  [I] [server.go:238]  http server Running on http://:8080
+2022/04/11 08:45:39.664  [I] [login.go:30]  [Login] u.Ctx.Input.RequestBody: {
+    "number": "A19180123",
+    "password": "a1234567"
+}
+
+2022/04/11 08:45:39.664  [I] [login.go:31]  [Login] req: {A19180123 a1234567}
+
+2022/04/11 08:45:39.673  [E] [redis.go:58]  [GetInt64] redisCache.Get, err: redis: nil, key: datastructLearningWeb:login:user_id 1
+2022/04/11 08:45:39.675  [D] [router.go:1272]  |      127.0.0.1|[42m 200 [0m|    11.3924ms|   match|[46m POST    [0m /api/v1/user/login   r:/api/v1/user/login
+2022/04/11 08:45:45.264  [I] [user.go:25]  bearToken: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJRCI6MSwiVXNlcm5hbWUiOiJ0ZXN0X-W8oOS4iSIsImV4cCI6MTY1MDI0MjQyMywiaXNzIjoibGliby5leHBsb3JlciJ9.8RIAnI2sRTU-08MgiUCUyPZoQNfXA2Uy3-YFNS98JHI
+2022/04/11 08:45:45.264  [I] [user.go:35]  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJRCI6MSwiVXNlcm5hbWUiOiJ0ZXN0X-W8oOS4iSIsImV4cCI6MTY1MDI0MjQyMywiaXNzIjoibGliby5leHBsb3JlciJ9.8RIAnI2sRTU-08MgiUCUyPZoQNfXA2Uy3-YFNS98JHI
+2022/04/11 08:45:45.264  [E] [user.go:66]  [parseToken] err: !ok || tokenClaims.Valid
+2022/04/11 08:45:45.264  [I] [user.go:40]  [Prepare] err: token无效
+2022/04/11 08:46:09.779  [I] [server.go:238]  http server Running on http://:8080
+2022/04/11 08:46:27.508  [I] [server.go:238]  http server Running on http://:8080
+2022/04/11 08:46:30.453  [I] [user.go:25]  bearToken: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJRCI6MSwiVXNlcm5hbWUiOiJ0ZXN0X-W8oOS4iSIsImV4cCI6MTY1MDI0MjQyMywiaXNzIjoibGliby5leHBsb3JlciJ9.8RIAnI2sRTU-08MgiUCUyPZoQNfXA2Uy3-YFNS98JHI
+2022/04/11 08:46:30.453  [I] [user.go:35]  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJRCI6MSwiVXNlcm5hbWUiOiJ0ZXN0X-W8oOS4iSIsImV4cCI6MTY1MDI0MjQyMywiaXNzIjoibGliby5leHBsb3JlciJ9.8RIAnI2sRTU-08MgiUCUyPZoQNfXA2Uy3-YFNS98JHI
+2022/04/11 08:46:30.453  [I] [user.go:67]  here~~~~~~~~~~~~
+2022/04/11 08:46:30.453  [E] [user.go:69]  [parseToken] err: !ok || tokenClaims.Valid
+2022/04/11 08:46:30.453  [I] [user.go:40]  [Prepare] err: token无效
+2022/04/11 08:49:18.258  [I] [server.go:238]  http server Running on http://:8080
+2022/04/11 08:49:22.112  [I] [server.go:238]  http server Running on http://:8080
+2022/04/11 08:55:31.194  [I] [server.go:238]  http server Running on http://:8080
+2022/04/11 08:55:33.916  [I] [user.go:25]  bearToken: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJRCI6MSwiVXNlcm5hbWUiOiJ0ZXN0X-W8oOS4iSIsImV4cCI6MTY1MDI0MjQyMywiaXNzIjoibGliby5leHBsb3JlciJ9.8RIAnI2sRTU-08MgiUCUyPZoQNfXA2Uy3-YFNS98JHI
+2022/04/11 08:55:33.916  [I] [user.go:35]  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJRCI6MSwiVXNlcm5hbWUiOiJ0ZXN0X-W8oOS4iSIsImV4cCI6MTY1MDI0MjQyMywiaXNzIjoibGliby5leHBsb3JlciJ9.8RIAnI2sRTU-08MgiUCUyPZoQNfXA2Uy3-YFNS98JHI
+2022/04/11 08:55:33.916  [I] [user.go:65]  claims: &{1 test_张三 { 1650242423  0 libo.explorer 0 }}
+2022/04/11 08:55:33.916  [E] [user.go:70]  [parseToken] err: !ok || tokenClaims.Valid
+2022/04/11 08:55:33.916  [I] [user.go:40]  [Prepare] err: token无效
+2022/04/11 08:59:29.564  [I] [server.go:238]  http server Running on http://:8080
+2022/04/11 08:59:31.457  [I] [user.go:25]  bearToken: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJRCI6MSwiVXNlcm5hbWUiOiJ0ZXN0X-W8oOS4iSIsImV4cCI6MTY1MDI0MjQyMywiaXNzIjoibGliby5leHBsb3JlciJ9.8RIAnI2sRTU-08MgiUCUyPZoQNfXA2Uy3-YFNS98JHI
+2022/04/11 08:59:31.457  [I] [user.go:35]  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJRCI6MSwiVXNlcm5hbWUiOiJ0ZXN0X-W8oOS4iSIsImV4cCI6MTY1MDI0MjQyMywiaXNzIjoibGliby5leHBsb3JlciJ9.8RIAnI2sRTU-08MgiUCUyPZoQNfXA2Uy3-YFNS98JHI
+2022/04/11 08:59:31.457  [I] [user.go:65]  claims: &{1 test_张三 { 1650242423  0 libo.explorer 0 }}
+2022/04/11 08:59:31.457  [I] [user.go:66]  ok: true
+2022/04/11 08:59:31.457  [E] [user.go:71]  [parseToken] err: !ok || tokenClaims.Valid
+2022/04/11 08:59:31.457  [I] [user.go:40]  [Prepare] err: token无效
+2022/04/11 09:00:11.095  [I] [server.go:238]  http server Running on http://:8080
+2022/04/11 09:00:20.029  [I] [server.go:238]  http server Running on http://:8080
+2022/04/11 09:00:26.881  [I] [user.go:25]  bearToken: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJRCI6MSwiVXNlcm5hbWUiOiJ0ZXN0X-W8oOS4iSIsImV4cCI6MTY1MDI0MjQyMywiaXNzIjoibGliby5leHBsb3JlciJ9.8RIAnI2sRTU-08MgiUCUyPZoQNfXA2Uy3-YFNS98JHI
+2022/04/11 09:00:26.882  [I] [user.go:35]  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJRCI6MSwiVXNlcm5hbWUiOiJ0ZXN0X-W8oOS4iSIsImV4cCI6MTY1MDI0MjQyMywiaXNzIjoibGliby5leHBsb3JlciJ9.8RIAnI2sRTU-08MgiUCUyPZoQNfXA2Uy3-YFNS98JHI
+2022/04/11 09:00:26.882  [I] [user.go:65]  claims: &{1 test_张三 { 1650242423  0 libo.explorer 0 }}
+2022/04/11 09:00:26.882  [I] [user.go:66]  ok: true
+2022/04/11 09:00:26.882  [I] [user.go:67]  tokenClaims.Valid: true
+2022/04/11 09:00:26.882  [E] [user.go:72]  [parseToken] err: !ok || tokenClaims.Valid
+2022/04/11 09:00:26.882  [I] [user.go:40]  [Prepare] err: token无效
+2022/04/11 09:00:47.969  [I] [server.go:238]  http server Running on http://:8080
+2022/04/11 09:00:57.394  [I] [server.go:238]  http server Running on http://:8080
+2022/04/11 09:00:59.743  [I] [user.go:25]  bearToken: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJRCI6MSwiVXNlcm5hbWUiOiJ0ZXN0X-W8oOS4iSIsImV4cCI6MTY1MDI0MjQyMywiaXNzIjoibGliby5leHBsb3JlciJ9.8RIAnI2sRTU-08MgiUCUyPZoQNfXA2Uy3-YFNS98JHI
+2022/04/11 09:00:59.743  [I] [user.go:35]  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJRCI6MSwiVXNlcm5hbWUiOiJ0ZXN0X-W8oOS4iSIsImV4cCI6MTY1MDI0MjQyMywiaXNzIjoibGliby5leHBsb3JlciJ9.8RIAnI2sRTU-08MgiUCUyPZoQNfXA2Uy3-YFNS98JHI
+2022/04/11 09:00:59.743  [I] [user.go:65]  claims: &{1 test_张三 { 1650242423  0 libo.explorer 0 }}
+2022/04/11 09:00:59.743  [I] [user.go:66]  ok: true
+2022/04/11 09:00:59.743  [I] [user.go:67]  tokenClaims.Valid: true
+2022/04/11 09:00:59.744  [E] [user.go:115]  [QueryUser] bizuser.QueryUserList, err: param is incorrect, bizReq: {"username":"lb","number":"","offset":0,"limit":0}
+
+2022/04/11 09:01:20.025  [I] [server.go:238]  http server Running on http://:8080
+2022/04/11 09:01:35.356  [I] [server.go:238]  http server Running on http://:8080
+2022/04/11 09:01:43.130  [I] [server.go:238]  http server Running on http://:8080
+2022/04/11 09:01:50.513  [I] [server.go:238]  http server Running on http://:8080
+2022/04/11 09:01:59.289  [I] [server.go:238]  http server Running on http://:8080
+2022/04/11 09:02:10.624  [I] [server.go:238]  http server Running on http://:8080
+2022/04/11 09:02:12.635  [I] [server.go:238]  http server Running on http://:8080
+2022/04/11 09:02:13.773  [I] [server.go:238]  http server Running on http://:8080
+2022/04/11 09:02:15.819  [I] [server.go:238]  http server Running on http://:8080
+2022/04/11 09:03:17.865  [I] [user.go:25]  bearToken: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJRCI6MSwiVXNlcm5hbWUiOiJ0ZXN0X-W8oOS4iSIsImV4cCI6MTY1MDI0MjQyMywiaXNzIjoibGliby5leHBsb3JlciJ9.8RIAnI2sRTU-08MgiUCUyPZoQNfXA2Uy3-YFNS98JHI
+2022/04/11 09:03:17.865  [I] [user.go:35]  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJRCI6MSwiVXNlcm5hbWUiOiJ0ZXN0X-W8oOS4iSIsImV4cCI6MTY1MDI0MjQyMywiaXNzIjoibGliby5leHBsb3JlciJ9.8RIAnI2sRTU-08MgiUCUyPZoQNfXA2Uy3-YFNS98JHI
+2022/04/11 09:03:17.865  [I] [user.go:65]  claims: &{1 test_张三 { 1650242423  0 libo.explorer 0 }}
+2022/04/11 09:03:17.865  [I] [user.go:66]  ok: true
+2022/04/11 09:03:17.865  [I] [user.go:67]  tokenClaims.Valid: true
+2022/04/11 09:03:17.867  [E] [user.go:115]  [QueryUser] bizuser.QueryUserList, err: param is incorrect, bizReq: {"username":"lb","number":"","offset":0,"limit":0}
+
+2022/04/11 09:03:18.145  [I] [user.go:25]  bearToken: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJRCI6MSwiVXNlcm5hbWUiOiJ0ZXN0X-W8oOS4iSIsImV4cCI6MTY1MDI0MjQyMywiaXNzIjoibGliby5leHBsb3JlciJ9.8RIAnI2sRTU-08MgiUCUyPZoQNfXA2Uy3-YFNS98JHI
+2022/04/11 09:03:18.145  [I] [user.go:35]  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJRCI6MSwiVXNlcm5hbWUiOiJ0ZXN0X-W8oOS4iSIsImV4cCI6MTY1MDI0MjQyMywiaXNzIjoibGliby5leHBsb3JlciJ9.8RIAnI2sRTU-08MgiUCUyPZoQNfXA2Uy3-YFNS98JHI
+2022/04/11 09:03:18.146  [I] [user.go:65]  claims: &{1 test_张三 { 1650242423  0 libo.explorer 0 }}
+2022/04/11 09:03:18.146  [I] [user.go:66]  ok: true
+2022/04/11 09:03:18.146  [I] [user.go:67]  tokenClaims.Valid: true
+2022/04/11 09:03:18.147  [E] [user.go:115]  [QueryUser] bizuser.QueryUserList, err: param is incorrect, bizReq: {"username":"lb","number":"","offset":0,"limit":0}
+
+2022/04/11 09:03:33.493  [I] [user.go:25]  bearToken: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJRCI6MSwiVXNlcm5hbWUiOiJ0ZXN0X-W8oOS4iSIsImV4cCI6MTY1MDI0MjQyMywiaXNzIjoibGliby5leHBsb3JlciJ9.8RIAnI2sRTU-08MgiUCUyPZoQNfXA2Uy3-YFNS98JHI
+2022/04/11 09:03:33.494  [I] [user.go:35]  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJRCI6MSwiVXNlcm5hbWUiOiJ0ZXN0X-W8oOS4iSIsImV4cCI6MTY1MDI0MjQyMywiaXNzIjoibGliby5leHBsb3JlciJ9.8RIAnI2sRTU-08MgiUCUyPZoQNfXA2Uy3-YFNS98JHI
+2022/04/11 09:03:33.494  [I] [user.go:65]  claims: &{1 test_张三 { 1650242423  0 libo.explorer 0 }}
+2022/04/11 09:03:33.494  [I] [user.go:66]  ok: true
+2022/04/11 09:03:33.494  [I] [user.go:67]  tokenClaims.Valid: true
+2022/04/11 09:03:33.496  [E] [user.go:115]  [QueryUser] bizuser.QueryUserList, err: param is incorrect, bizReq: {"username":"lb","number":"","offset":0,"limit":0}
+
+2022/04/11 09:09:52.836  [I] [server.go:238]  http server Running on http://:8080
+2022/04/11 09:09:57.343  [I] [user.go:26]  bearToken: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJRCI6MSwiVXNlcm5hbWUiOiJ0ZXN0X-W8oOS4iSIsImV4cCI6MTY1MDI0MjQyMywiaXNzIjoibGliby5leHBsb3JlciJ9.8RIAnI2sRTU-08MgiUCUyPZoQNfXA2Uy3-YFNS98JHI
+2022/04/11 09:09:57.344  [I] [user.go:36]  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJRCI6MSwiVXNlcm5hbWUiOiJ0ZXN0X-W8oOS4iSIsImV4cCI6MTY1MDI0MjQyMywiaXNzIjoibGliby5leHBsb3JlciJ9.8RIAnI2sRTU-08MgiUCUyPZoQNfXA2Uy3-YFNS98JHI
+2022/04/11 09:09:57.345  [I] [user.go:66]  claims: &{1 test_张三 { 1650242423  0 libo.explorer 0 }}
+2022/04/11 09:09:57.345  [I] [user.go:67]  ok: true
+2022/04/11 09:09:57.345  [I] [user.go:68]  tokenClaims.Valid: true
+2022/04/11 09:09:57.345  [E] [user.go:114]  [QueryUser] strconv.ParseInt, err: strconv.ParseInt: parsing "": invalid syntax
+
+2022/04/11 09:11:41.024  [I] [server.go:238]  http server Running on http://:8080
+2022/04/11 09:11:43.170  [I] [user.go:26]  bearToken: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJRCI6MSwiVXNlcm5hbWUiOiJ0ZXN0X-W8oOS4iSIsImV4cCI6MTY1MDI0MjQyMywiaXNzIjoibGliby5leHBsb3JlciJ9.8RIAnI2sRTU-08MgiUCUyPZoQNfXA2Uy3-YFNS98JHI
+2022/04/11 09:11:43.170  [I] [user.go:36]  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJRCI6MSwiVXNlcm5hbWUiOiJ0ZXN0X-W8oOS4iSIsImV4cCI6MTY1MDI0MjQyMywiaXNzIjoibGliby5leHBsb3JlciJ9.8RIAnI2sRTU-08MgiUCUyPZoQNfXA2Uy3-YFNS98JHI
+2022/04/11 09:11:43.170  [I] [user.go:66]  claims: &{1 test_张三 { 1650242423  0 libo.explorer 0 }}
+2022/04/11 09:11:43.170  [I] [user.go:67]  ok: true
+2022/04/11 09:11:43.170  [I] [user.go:68]  tokenClaims.Valid: true
+2022/04/11 09:11:43.198  [C] [config.go:500]  the request url is  /api/v1/user/query
+2022/04/11 09:11:43.198  [C] [config.go:501]  Handler crashed with error wrong object type `[]*dao.User` for rows scan, need *dataStructLearningWeb/dao.User
+2022/04/11 09:11:43.198  [C] [config.go:507]  D:/Program Files/Go/src/runtime/panic.go:838
+2022/04/11 09:11:43.198  [C] [config.go:507]  D:/goproject/pkg/mod/github.com/astaxie/beego@v1.12.3/orm/db.go:952
+2022/04/11 09:11:43.198  [C] [config.go:507]  D:/goproject/pkg/mod/github.com/astaxie/beego@v1.12.3/orm/orm_queryset.go:219
+2022/04/11 09:11:43.198  [C] [config.go:507]  D:/goproject/src/libo.explorer/dataStructLearningWeb/dao/daouser/daouser.go:41
+2022/04/11 09:11:43.198  [C] [config.go:507]  D:/goproject/src/libo.explorer/dataStructLearningWeb/biz/bizuser/user.go:91
+2022/04/11 09:11:43.198  [C] [config.go:507]  D:/goproject/src/libo.explorer/dataStructLearningWeb/controllers/user.go:142
+2022/04/11 09:11:43.198  [C] [config.go:507]  D:/Program Files/Go/src/reflect/value.go:556
+2022/04/11 09:11:43.198  [C] [config.go:507]  D:/Program Files/Go/src/reflect/value.go:339
+2022/04/11 09:11:43.198  [C] [config.go:507]  D:/goproject/pkg/mod/github.com/beego/beego/v2@v2.0.2/server/web/router.go:1200
+2022/04/11 09:11:43.199  [C] [config.go:507]  D:/goproject/pkg/mod/github.com/beego/beego/v2@v2.0.2/server/web/filter.go:83
+2022/04/11 09:11:43.199  [C] [config.go:507]  D:/goproject/pkg/mod/github.com/beego/beego/v2@v2.0.2/server/web/router.go:973
+2022/04/11 09:11:43.199  [C] [config.go:507]  D:/Program Files/Go/src/net/http/server.go:2916
+2022/04/11 09:11:43.199  [C] [config.go:507]  D:/Program Files/Go/src/net/http/server.go:1966
+2022/04/11 09:11:43.199  [C] [config.go:507]  D:/Program Files/Go/src/runtime/asm_amd64.s:1571
+2022/04/11 09:12:39.501  [I] [server.go:238]  http server Running on http://:8080
+2022/04/11 09:14:40.165  [I] [server.go:238]  http server Running on http://:8080
+2022/04/11 09:16:48.599  [I] [server.go:238]  http server Running on http://:8080
+2022/04/11 09:16:53.225  [I] [user.go:26]  bearToken: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJRCI6MSwiVXNlcm5hbWUiOiJ0ZXN0X-W8oOS4iSIsImV4cCI6MTY1MDI0MjQyMywiaXNzIjoibGliby5leHBsb3JlciJ9.8RIAnI2sRTU-08MgiUCUyPZoQNfXA2Uy3-YFNS98JHI
+2022/04/11 09:16:53.225  [I] [user.go:36]  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJRCI6MSwiVXNlcm5hbWUiOiJ0ZXN0X-W8oOS4iSIsImV4cCI6MTY1MDI0MjQyMywiaXNzIjoibGliby5leHBsb3JlciJ9.8RIAnI2sRTU-08MgiUCUyPZoQNfXA2Uy3-YFNS98JHI
+2022/04/11 09:16:53.232  [C] [config.go:500]  the request url is  /api/v1/user/query
+2022/04/11 09:16:53.232  [C] [config.go:501]  Handler crashed with error runtime error: invalid memory address or nil pointer dereference
+2022/04/11 09:16:53.232  [C] [config.go:507]  D:/Program Files/Go/src/runtime/panic.go:838
+2022/04/11 09:16:53.232  [C] [config.go:507]  D:/Program Files/Go/src/runtime/panic.go:220
+2022/04/11 09:16:53.232  [C] [config.go:507]  D:/Program Files/Go/src/runtime/signal_windows.go:255
+2022/04/11 09:16:53.232  [C] [config.go:507]  D:/goproject/src/libo.explorer/dataStructLearningWeb/controllers/user.go:150
+2022/04/11 09:16:53.232  [C] [config.go:507]  D:/Program Files/Go/src/reflect/value.go:556
+2022/04/11 09:16:53.232  [C] [config.go:507]  D:/Program Files/Go/src/reflect/value.go:339
+2022/04/11 09:16:53.232  [C] [config.go:507]  D:/goproject/pkg/mod/github.com/beego/beego/v2@v2.0.2/server/web/router.go:1200
+2022/04/11 09:16:53.232  [C] [config.go:507]  D:/goproject/pkg/mod/github.com/beego/beego/v2@v2.0.2/server/web/filter.go:83
+2022/04/11 09:16:53.232  [C] [config.go:507]  D:/goproject/pkg/mod/github.com/beego/beego/v2@v2.0.2/server/web/router.go:973
+2022/04/11 09:16:53.232  [C] [config.go:507]  D:/Program Files/Go/src/net/http/server.go:2916
+2022/04/11 09:16:53.232  [C] [config.go:507]  D:/Program Files/Go/src/net/http/server.go:1966
+2022/04/11 09:16:53.232  [C] [config.go:507]  D:/Program Files/Go/src/runtime/asm_amd64.s:1571
+2022/04/11 09:18:39.246  [I] [server.go:238]  http server Running on http://:8080
+2022/04/11 09:18:58.259  [I] [user.go:26]  bearToken: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJRCI6MSwiVXNlcm5hbWUiOiJ0ZXN0X-W8oOS4iSIsImV4cCI6MTY1MDI0MjQyMywiaXNzIjoibGliby5leHBsb3JlciJ9.8RIAnI2sRTU-08MgiUCUyPZoQNfXA2Uy3-YFNS98JHI
+2022/04/11 09:18:58.259  [I] [user.go:36]  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJRCI6MSwiVXNlcm5hbWUiOiJ0ZXN0X-W8oOS4iSIsImV4cCI6MTY1MDI0MjQyMywiaXNzIjoibGliby5leHBsb3JlciJ9.8RIAnI2sRTU-08MgiUCUyPZoQNfXA2Uy3-YFNS98JHI
+2022/04/11 09:18:58.265  [C] [config.go:500]  the request url is  /api/v1/user/query
+2022/04/11 09:18:58.265  [C] [config.go:501]  Handler crashed with error runtime error: invalid memory address or nil pointer dereference
+2022/04/11 09:18:58.265  [C] [config.go:507]  D:/Program Files/Go/src/runtime/panic.go:838
+2022/04/11 09:18:58.265  [C] [config.go:507]  D:/Program Files/Go/src/runtime/panic.go:220
+2022/04/11 09:18:58.265  [C] [config.go:507]  D:/Program Files/Go/src/runtime/signal_windows.go:255
+2022/04/11 09:18:58.265  [C] [config.go:507]  D:/goproject/src/libo.explorer/dataStructLearningWeb/controllers/user.go:150
+2022/04/11 09:18:58.265  [C] [config.go:507]  D:/Program Files/Go/src/reflect/value.go:556
+2022/04/11 09:18:58.265  [C] [config.go:507]  D:/Program Files/Go/src/reflect/value.go:339
+2022/04/11 09:18:58.265  [C] [config.go:507]  D:/goproject/pkg/mod/github.com/beego/beego/v2@v2.0.2/server/web/router.go:1200
+2022/04/11 09:18:58.265  [C] [config.go:507]  D:/goproject/pkg/mod/github.com/beego/beego/v2@v2.0.2/server/web/filter.go:83
+2022/04/11 09:18:58.265  [C] [config.go:507]  D:/goproject/pkg/mod/github.com/beego/beego/v2@v2.0.2/server/web/router.go:973
+2022/04/11 09:18:58.266  [C] [config.go:507]  D:/Program Files/Go/src/net/http/server.go:2916
+2022/04/11 09:18:58.266  [C] [config.go:507]  D:/Program Files/Go/src/net/http/server.go:1966
+2022/04/11 09:18:58.266  [C] [config.go:507]  D:/Program Files/Go/src/runtime/asm_amd64.s:1571
+2022/04/11 09:20:19.851  [I] [server.go:238]  http server Running on http://:8080
+2022/04/11 09:20:20.878  [I] [server.go:238]  http server Running on http://:8080
+2022/04/11 09:20:22.614  [I] [server.go:238]  http server Running on http://:8080
+2022/04/11 09:20:24.414  [I] [server.go:238]  http server Running on http://:8080
+2022/04/11 09:20:34.461  [I] [server.go:238]  http server Running on http://:8080
+2022/04/11 09:20:39.274  [I] [user.go:26]  bearToken: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJRCI6MSwiVXNlcm5hbWUiOiJ0ZXN0X-W8oOS4iSIsImV4cCI6MTY1MDI0MjQyMywiaXNzIjoibGliby5leHBsb3JlciJ9.8RIAnI2sRTU-08MgiUCUyPZoQNfXA2Uy3-YFNS98JHI
+2022/04/11 09:20:39.274  [I] [user.go:36]  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJRCI6MSwiVXNlcm5hbWUiOiJ0ZXN0X-W8oOS4iSIsImV4cCI6MTY1MDI0MjQyMywiaXNzIjoibGliby5leHBsb3JlciJ9.8RIAnI2sRTU-08MgiUCUyPZoQNfXA2Uy3-YFNS98JHI
+2022/04/11 09:20:39.292  [C] [config.go:500]  the request url is  /api/v1/user/query
+2022/04/11 09:20:39.292  [C] [config.go:501]  Handler crashed with error runtime error: invalid memory address or nil pointer dereference
+2022/04/11 09:20:39.292  [C] [config.go:507]  D:/Program Files/Go/src/runtime/panic.go:838
+2022/04/11 09:20:39.292  [C] [config.go:507]  D:/Program Files/Go/src/runtime/panic.go:220
+2022/04/11 09:20:39.292  [C] [config.go:507]  D:/Program Files/Go/src/runtime/signal_windows.go:255
+2022/04/11 09:20:39.292  [C] [config.go:507]  D:/goproject/src/libo.explorer/dataStructLearningWeb/controllers/user.go:150
+2022/04/11 09:20:39.292  [C] [config.go:507]  D:/Program Files/Go/src/reflect/value.go:556
+2022/04/11 09:20:39.292  [C] [config.go:507]  D:/Program Files/Go/src/reflect/value.go:339
+2022/04/11 09:20:39.292  [C] [config.go:507]  D:/goproject/pkg/mod/github.com/beego/beego/v2@v2.0.2/server/web/router.go:1200
+2022/04/11 09:20:39.298  [C] [config.go:507]  D:/goproject/pkg/mod/github.com/beego/beego/v2@v2.0.2/server/web/filter.go:83
+2022/04/11 09:20:39.298  [C] [config.go:507]  D:/goproject/pkg/mod/github.com/beego/beego/v2@v2.0.2/server/web/router.go:973
+2022/04/11 09:20:39.298  [C] [config.go:507]  D:/Program Files/Go/src/net/http/server.go:2916
+2022/04/11 09:20:39.298  [C] [config.go:507]  D:/Program Files/Go/src/net/http/server.go:1966
+2022/04/11 09:20:39.298  [C] [config.go:507]  D:/Program Files/Go/src/runtime/asm_amd64.s:1571
+2022/04/11 09:22:24.677  [I] [server.go:238]  http server Running on http://:8080
+2022/04/11 09:22:56.873  [I] [server.go:238]  http server Running on http://:8080
+2022/04/11 09:22:59.567  [I] [user.go:26]  bearToken: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJRCI6MSwiVXNlcm5hbWUiOiJ0ZXN0X-W8oOS4iSIsImV4cCI6MTY1MDI0MjQyMywiaXNzIjoibGliby5leHBsb3JlciJ9.8RIAnI2sRTU-08MgiUCUyPZoQNfXA2Uy3-YFNS98JHI
+2022/04/11 09:22:59.567  [I] [user.go:36]  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJRCI6MSwiVXNlcm5hbWUiOiJ0ZXN0X-W8oOS4iSIsImV4cCI6MTY1MDI0MjQyMywiaXNzIjoibGliby5leHBsb3JlciJ9.8RIAnI2sRTU-08MgiUCUyPZoQNfXA2Uy3-YFNS98JHI
+2022/04/11 09:22:59.569  [C] [config.go:500]  the request url is  /api/v1/user/query
+2022/04/11 09:22:59.569  [C] [config.go:501]  Handler crashed with error runtime error: invalid memory address or nil pointer dereference
+2022/04/11 09:22:59.569  [C] [config.go:507]  D:/Program Files/Go/src/runtime/panic.go:838
+2022/04/11 09:22:59.569  [C] [config.go:507]  D:/Program Files/Go/src/runtime/panic.go:220
+2022/04/11 09:22:59.569  [C] [config.go:507]  D:/Program Files/Go/src/runtime/signal_windows.go:255
+2022/04/11 09:22:59.569  [C] [config.go:507]  D:/goproject/src/libo.explorer/dataStructLearningWeb/controllers/user.go:150
+2022/04/11 09:22:59.569  [C] [config.go:507]  D:/Program Files/Go/src/reflect/value.go:556
+2022/04/11 09:22:59.569  [C] [config.go:507]  D:/Program Files/Go/src/reflect/value.go:339
+2022/04/11 09:22:59.569  [C] [config.go:507]  D:/goproject/pkg/mod/github.com/beego/beego/v2@v2.0.2/server/web/router.go:1200
+2022/04/11 09:22:59.569  [C] [config.go:507]  D:/goproject/pkg/mod/github.com/beego/beego/v2@v2.0.2/server/web/filter.go:83
+2022/04/11 09:22:59.569  [C] [config.go:507]  D:/goproject/pkg/mod/github.com/beego/beego/v2@v2.0.2/server/web/router.go:973
+2022/04/11 09:22:59.569  [C] [config.go:507]  D:/Program Files/Go/src/net/http/server.go:2916
+2022/04/11 09:22:59.569  [C] [config.go:507]  D:/Program Files/Go/src/net/http/server.go:1966
+2022/04/11 09:22:59.569  [C] [config.go:507]  D:/Program Files/Go/src/runtime/asm_amd64.s:1571
+2022/04/11 09:23:59.018  [I] [server.go:238]  http server Running on http://:8080
+2022/04/11 10:53:54.861  [I] [user.go:26]  bearToken: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJRCI6MSwiVXNlcm5hbWUiOiJ0ZXN0X-W8oOS4iSIsImV4cCI6MTY1MDI0MjQyMywiaXNzIjoibGliby5leHBsb3JlciJ9.8RIAnI2sRTU-08MgiUCUyPZoQNfXA2Uy3-YFNS98JHI
+2022/04/11 10:53:55.063  [C] [config.go:500]  the request url is  /api/v1/user/query
+2022/04/11 10:53:55.071  [C] [config.go:501]  Handler crashed with error runtime error: invalid memory address or nil pointer dereference
+2022/04/11 10:53:55.084  [C] [config.go:507]  D:/Program Files/Go/src/runtime/panic.go:838
+2022/04/11 10:53:55.094  [C] [config.go:507]  D:/Program Files/Go/src/runtime/panic.go:220
+2022/04/11 10:53:55.094  [C] [config.go:507]  D:/Program Files/Go/src/runtime/signal_windows.go:255
+2022/04/11 10:53:55.094  [C] [config.go:507]  D:/goproject/src/libo.explorer/dataStructLearningWeb/controllers/user.go:149
+2022/04/11 10:53:55.105  [C] [config.go:507]  D:/Program Files/Go/src/reflect/value.go:556
+2022/04/11 10:53:55.105  [C] [config.go:507]  D:/Program Files/Go/src/reflect/value.go:339
+2022/04/11 10:53:55.105  [C] [config.go:507]  D:/goproject/pkg/mod/github.com/beego/beego/v2@v2.0.2/server/web/router.go:1200
+2022/04/11 10:53:55.106  [C] [config.go:507]  D:/goproject/pkg/mod/github.com/beego/beego/v2@v2.0.2/server/web/filter.go:83
+2022/04/11 10:53:55.106  [C] [config.go:507]  D:/goproject/pkg/mod/github.com/beego/beego/v2@v2.0.2/server/web/router.go:973
+2022/04/11 10:53:55.106  [C] [config.go:507]  D:/Program Files/Go/src/net/http/server.go:2916
+2022/04/11 10:53:55.106  [C] [config.go:507]  D:/Program Files/Go/src/net/http/server.go:1966
+2022/04/11 10:53:55.117  [C] [config.go:507]  D:/Program Files/Go/src/runtime/asm_amd64.s:1571
+2022/04/11 10:55:09.833  [I] [server.go:238]  http server Running on http://:8080
+2022/04/11 10:55:20.603  [I] [user.go:26]  bearToken: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJRCI6MSwiVXNlcm5hbWUiOiJ0ZXN0X-W8oOS4iSIsImV4cCI6MTY1MDI0MjQyMywiaXNzIjoibGliby5leHBsb3JlciJ9.8RIAnI2sRTU-08MgiUCUyPZoQNfXA2Uy3-YFNS98JHI
+2022/04/11 10:55:20.607  [C] [config.go:500]  the request url is  /api/v1/user/query
+2022/04/11 10:55:20.607  [C] [config.go:501]  Handler crashed with error runtime error: invalid memory address or nil pointer dereference
+2022/04/11 10:55:20.607  [C] [config.go:507]  D:/Program Files/Go/src/runtime/panic.go:838
+2022/04/11 10:55:20.607  [C] [config.go:507]  D:/Program Files/Go/src/runtime/panic.go:220
+2022/04/11 10:55:20.607  [C] [config.go:507]  D:/Program Files/Go/src/runtime/signal_windows.go:255
+2022/04/11 10:55:20.607  [C] [config.go:507]  D:/goproject/src/libo.explorer/dataStructLearningWeb/controllers/user.go:149
+2022/04/11 10:55:20.607  [C] [config.go:507]  D:/Program Files/Go/src/reflect/value.go:556
+2022/04/11 10:55:20.607  [C] [config.go:507]  D:/Program Files/Go/src/reflect/value.go:339
+2022/04/11 10:55:20.608  [C] [config.go:507]  D:/goproject/pkg/mod/github.com/beego/beego/v2@v2.0.2/server/web/router.go:1200
+2022/04/11 10:55:20.608  [C] [config.go:507]  D:/goproject/pkg/mod/github.com/beego/beego/v2@v2.0.2/server/web/filter.go:83
+2022/04/11 10:55:20.608  [C] [config.go:507]  D:/goproject/pkg/mod/github.com/beego/beego/v2@v2.0.2/server/web/router.go:973
+2022/04/11 10:55:20.608  [C] [config.go:507]  D:/Program Files/Go/src/net/http/server.go:2916
+2022/04/11 10:55:20.608  [C] [config.go:507]  D:/Program Files/Go/src/net/http/server.go:1966
+2022/04/11 10:55:20.608  [C] [config.go:507]  D:/Program Files/Go/src/runtime/asm_amd64.s:1571
+2022/04/11 10:56:33.000  [I] [server.go:238]  http server Running on http://:8080
+2022/04/11 10:57:29.414  [I] [server.go:238]  http server Running on http://:8080
+2022/04/11 11:58:44.879  [I] [server.go:238]  http server Running on http://:8080
+2022/04/11 11:58:48.959  [I] [server.go:238]  http server Running on http://:8080
+2022/04/11 11:58:50.124  [I] [server.go:238]  http server Running on http://:8080
+2022/04/11 11:58:54.065  [I] [server.go:238]  http server Running on http://:8080
+2022/04/11 14:58:27.994  [I] [server.go:238]  http server Running on http://:8080
+2022/04/11 14:58:29.927  [I] [server.go:238]  http server Running on http://:8080
+2022/04/11 14:58:34.437  [I] [server.go:238]  http server Running on http://:8080
+2022/04/11 14:58:36.701  [I] [server.go:238]  http server Running on http://:8080
+2022/04/11 14:58:38.079  [I] [server.go:238]  http server Running on http://:8080
+2022/04/11 14:58:40.442  [I] [server.go:238]  http server Running on http://:8080
+2022/04/11 14:58:42.447  [I] [server.go:238]  http server Running on http://:8080
+2022/04/11 14:58:44.388  [I] [server.go:238]  http server Running on http://:8080
+2022/04/11 14:58:46.330  [I] [server.go:238]  http server Running on http://:8080
+2022/04/11 14:58:48.287  [I] [server.go:238]  http server Running on http://:8080
+2022/04/11 14:58:50.239  [I] [server.go:238]  http server Running on http://:8080
+2022/04/11 14:58:57.112  [I] [server.go:238]  http server Running on http://:8080
+2022/04/11 14:59:07.123  [C] [config.go:500]  the request url is  /api/v1/user/query
+2022/04/11 14:59:07.123  [C] [config.go:501]  Handler crashed with error runtime error: invalid memory address or nil pointer dereference
+2022/04/11 14:59:07.123  [C] [config.go:507]  D:/Program Files/Go/src/runtime/panic.go:838
+2022/04/11 14:59:07.123  [C] [config.go:507]  D:/Program Files/Go/src/runtime/panic.go:220
+2022/04/11 14:59:07.123  [C] [config.go:507]  D:/Program Files/Go/src/runtime/signal_windows.go:255
+2022/04/11 14:59:07.123  [C] [config.go:507]  D:/goproject/src/libo.explorer/dataStructLearningWeb/controllers/user.go:148
+2022/04/11 14:59:07.123  [C] [config.go:507]  D:/Program Files/Go/src/reflect/value.go:556
+2022/04/11 14:59:07.123  [C] [config.go:507]  D:/Program Files/Go/src/reflect/value.go:339
+2022/04/11 14:59:07.123  [C] [config.go:507]  D:/goproject/pkg/mod/github.com/beego/beego/v2@v2.0.2/server/web/router.go:1200
+2022/04/11 14:59:07.124  [C] [config.go:507]  D:/goproject/pkg/mod/github.com/beego/beego/v2@v2.0.2/server/web/filter.go:83
+2022/04/11 14:59:07.124  [C] [config.go:507]  D:/goproject/pkg/mod/github.com/beego/beego/v2@v2.0.2/server/web/router.go:973
+2022/04/11 14:59:07.124  [C] [config.go:507]  D:/Program Files/Go/src/net/http/server.go:2916
+2022/04/11 14:59:07.124  [C] [config.go:507]  D:/Program Files/Go/src/net/http/server.go:1966
+2022/04/11 14:59:07.124  [C] [config.go:507]  D:/Program Files/Go/src/runtime/asm_amd64.s:1571
+2022/04/11 15:00:29.138  [I] [server.go:238]  http server Running on http://:8080
+2022/04/11 15:00:43.171  [I] [server.go:238]  http server Running on http://:8080
+2022/04/11 15:00:46.249  [D] [router.go:1272]  |      127.0.0.1|[42m 200 [0m|     1.9594ms|   match|[44m GET     [0m /api/v1/user/query   r:/api/v1/user/query
+2022/04/11 15:01:39.113  [D] [router.go:1272]  |      127.0.0.1|[42m 200 [0m|     3.4338ms|   match|[44m GET     [0m /api/v1/user/query   r:/api/v1/user/query
+2022/04/11 15:03:24.756  [I] [server.go:238]  http server Running on http://:8080
+2022/04/11 15:03:42.922  [C] [config.go:500]  the request url is  /api/v1/user/update
+2022/04/11 15:03:42.922  [C] [config.go:501]  Handler crashed with error interface conversion: interface {} is string, not int64
+2022/04/11 15:03:42.922  [C] [config.go:507]  D:/Program Files/Go/src/runtime/panic.go:838
+2022/04/11 15:03:42.922  [C] [config.go:507]  D:/Program Files/Go/src/runtime/iface.go:262
+2022/04/11 15:03:42.922  [C] [config.go:507]  D:/goproject/src/libo.explorer/dataStructLearningWeb/controllers/user.go:162
+2022/04/11 15:03:42.922  [C] [config.go:507]  D:/Program Files/Go/src/reflect/value.go:556
+2022/04/11 15:03:42.922  [C] [config.go:507]  D:/Program Files/Go/src/reflect/value.go:339
+2022/04/11 15:03:42.922  [C] [config.go:507]  D:/goproject/pkg/mod/github.com/beego/beego/v2@v2.0.2/server/web/router.go:1200
+2022/04/11 15:03:42.922  [C] [config.go:507]  D:/goproject/pkg/mod/github.com/beego/beego/v2@v2.0.2/server/web/filter.go:83
+2022/04/11 15:03:42.922  [C] [config.go:507]  D:/goproject/pkg/mod/github.com/beego/beego/v2@v2.0.2/server/web/router.go:973
+2022/04/11 15:03:42.922  [C] [config.go:507]  D:/Program Files/Go/src/net/http/server.go:2916
+2022/04/11 15:03:42.922  [C] [config.go:507]  D:/Program Files/Go/src/net/http/server.go:1966
+2022/04/11 15:03:42.922  [C] [config.go:507]  D:/Program Files/Go/src/runtime/asm_amd64.s:1571
+2022/04/11 15:04:34.789  [I] [server.go:238]  http server Running on http://:8080
+2022/04/11 15:06:03.950  [I] [server.go:238]  http server Running on http://:8080
+2022/04/11 15:06:11.622  [I] [server.go:238]  http server Running on http://:8080
+2022/04/11 15:07:18.975  [I] [user.go:163]  [UpdateUser] u.Ctx.Input.RequestBody: {
+    "id": 1,
+    "username": "test_张三",
+    "password": "a1234567",
+    "number": "A19180123",
+    "is_admin": 1
+}
+
+2022/04/11 15:07:18.975  [I] [user.go:164]  [UpdateUser] req: {1 test_张三 A19180123 a1234567 0 1 0}
+
+2022/04/11 15:07:19.006  [D] [router.go:1272]  |      127.0.0.1|[42m 200 [0m|    31.1461ms|   match|[46m POST    [0m /api/v1/user/update   r:/api/v1/user/update
+2022/04/12 08:42:25.380  [I] [server.go:238]  http server Running on http://:8080
+2022/04/12 15:41:35.495  [I] [server.go:238]  http server Running on http://:8080
