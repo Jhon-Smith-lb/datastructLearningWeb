@@ -8,7 +8,7 @@ import (
 
 func init() {
 	// 需要在init中注册定义的model
-	orm.RegisterModel(new(User))
+	orm.RegisterModel(new(User), new(News))
 }
 
 type User struct {
@@ -48,8 +48,8 @@ type News struct {
 	CreatedAt time.Time `json:"created_at"`
 	UpdatedAt time.Time `json:"updated_at"`
 	IsDel     int8      `json:"is_del"`
-	Offset    int64     `json:"offset"`
-	Limit     int64     `json:"limit"`
+	Offset    *int64     `json:"offset" orm:"-"`
+	Limit     *int64     `json:"limit" orm:"-"`
 }
 
 func NewNews() *News {

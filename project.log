@@ -614,3 +614,217 @@
 2022/04/11 15:07:19.006  [D] [router.go:1272]  |      127.0.0.1|[42m 200 [0m|    31.1461ms|   match|[46m POST    [0m /api/v1/user/update   r:/api/v1/user/update
 2022/04/12 08:42:25.380  [I] [server.go:238]  http server Running on http://:8080
 2022/04/12 15:41:35.495  [I] [server.go:238]  http server Running on http://:8080
+2022/04/13 15:50:07.670  [I] [server.go:238]  http server Running on http://:8080
+2022/04/13 15:53:15.952  [D] [router.go:1272]  |      127.0.0.1|[43m 404 [0m|   134.4516ms| nomatch|[46m POST    [0m /api/v1/user/login
+2022/04/13 15:53:25.756  [I] [login.go:30]  [Login] u.Ctx.Input.RequestBody: {
+    "number": "A19180123",
+    "password": "a1234567"
+}
+
+2022/04/13 15:53:25.798  [I] [login.go:31]  [Login] req: {A19180123 a1234567}
+
+2022/04/13 15:53:25.820  [E] [redis.go:58]  [GetInt64] redisCache.Get, err: redis: nil, key: datastructLearningWeb:login:user_id 1
+2022/04/13 15:53:25.834  [D] [router.go:1272]  |      127.0.0.1|[42m 200 [0m|    78.9603ms|   match|[46m POST    [0m /api/v1/login   r:/api/v1/login/
+2022/04/13 15:53:43.760  [I] [user.go:99]  [AddUser] u.Ctx.Input.RequestBody: {
+    "username": "test_张三",
+    "password": "a1234567",
+    "number": "A19180123"
+}
+
+2022/04/13 15:53:43.760  [I] [user.go:100]  [AddUser] req: {1 test_张三 A19180123 a1234567 0 0 0}
+
+2022/04/13 15:53:43.781  [E] [user.go:104]  [AddUser] bizuser.AddUser, err: Error 1048: Column 'created_at' cannot be null
+
+2022/04/13 15:56:52.097  [I] [server.go:238]  http server Running on http://:8080
+2022/04/13 15:58:01.756  [I] [user.go:99]  [AddUser] u.Ctx.Input.RequestBody: {
+    "username": "test_张三",
+    "password": "a1234567",
+    "number": "A19180123"
+}
+
+2022/04/13 15:58:01.756  [I] [user.go:100]  [AddUser] req: {1 test_张三 A19180123 a1234567 0 0 0}
+
+2022/04/13 15:58:01.773  [E] [user.go:104]  [AddUser] bizuser.AddUser, err: Error 1062: Duplicate entry 'A19180123' for key 'user.idx_number'
+
+2022/04/13 15:58:22.295  [I] [user.go:99]  [AddUser] u.Ctx.Input.RequestBody: {
+    "username": "test_张三",
+    "password": "a1234567",
+    "number": "A19180124"
+}
+
+2022/04/13 15:58:22.295  [I] [user.go:100]  [AddUser] req: {1 test_张三 A19180124 a1234567 0 0 0}
+
+2022/04/13 15:58:22.311  [D] [router.go:1272]  |      127.0.0.1|[42m 200 [0m|     20.059ms|   match|[46m POST    [0m /api/v1/user/add   r:/api/v1/user/add
+2022/04/13 16:00:20.354  [I] [server.go:238]  http server Running on http://:8080
+2022/04/13 16:02:08.212  [I] [server.go:238]  http server Running on http://:8080
+2022/04/13 16:02:25.888  [I] [user.go:181]  [UpdateUser] u.Ctx.Input.RequestBody: {
+    "id": 1,
+    "username": "test_李四",
+    "password": "a1234567",
+    "number": "A19180123"
+}
+
+2022/04/13 16:02:25.888  [I] [user.go:182]  [UpdateUser] req: {1 test_李四 A19180123 a1234567 0 0 0 0}
+
+2022/04/13 16:02:25.895  [E] [user.go:185]  [UpdateUser] bizuser.UpdateUser, err: 该用户是管理员，不可修改
+
+2022/04/13 16:02:38.462  [I] [user.go:181]  [UpdateUser] u.Ctx.Input.RequestBody: {
+    "id": 1,
+    "username": "test_李四",
+    "password": "a1234567",
+    "number": "A19180124"
+}
+
+2022/04/13 16:02:38.462  [I] [user.go:182]  [UpdateUser] req: {1 test_李四 A19180124 a1234567 0 0 0 0}
+
+2022/04/13 16:02:38.466  [E] [user.go:185]  [UpdateUser] bizuser.UpdateUser, err: 该用户是管理员，不可修改
+
+2022/04/13 16:03:54.152  [I] [user.go:181]  [UpdateUser] u.Ctx.Input.RequestBody: {
+    "id": 3,
+    "username": "test_李四",
+    "password": "a1234567",
+    "number": "A19180124"
+}
+
+2022/04/13 16:03:54.152  [I] [user.go:182]  [UpdateUser] req: {1 test_李四 A19180124 a1234567 0 0 0 0}
+
+2022/04/13 16:03:54.158  [E] [user.go:185]  [UpdateUser] bizuser.UpdateUser, err: 该用户是管理员，不可修改
+
+2022/04/13 16:04:07.146  [I] [user.go:181]  [UpdateUser] u.Ctx.Input.RequestBody: {
+    "id": 3,
+    "username": "test_李四",
+    "password": "a1234567",
+    "number": "A19180124"
+}
+
+2022/04/13 16:04:07.146  [I] [user.go:182]  [UpdateUser] req: {1 test_李四 A19180124 a1234567 0 0 0 0}
+
+2022/04/13 16:04:07.152  [E] [user.go:185]  [UpdateUser] bizuser.UpdateUser, err: 该用户是管理员，不可修改
+
+2022/04/13 16:05:26.843  [I] [server.go:238]  http server Running on http://:8080
+2022/04/13 16:06:19.646  [I] [user.go:181]  [UpdateUser] u.Ctx.Input.RequestBody: {
+    "id": 3,
+    "username": "test_李四",
+    "password": "a1234567",
+    "number": "A19180124"
+}
+
+2022/04/13 16:06:19.646  [I] [user.go:182]  [UpdateUser] req: {3 test_李四 A19180124 a1234567 0 0 0 0 1}
+
+2022/04/13 16:06:19.657  [D] [router.go:1272]  |      127.0.0.1|[42m 200 [0m|    16.8922ms|   match|[46m POST    [0m /api/v1/user/update   r:/api/v1/user/update
+2022/04/13 16:06:46.817  [D] [router.go:1272]  |      127.0.0.1|[42m 200 [0m|     4.3011ms|   match|[44m GET     [0m /api/v1/user/query   r:/api/v1/user/query
+2022/04/13 16:07:08.611  [D] [router.go:1272]  |      127.0.0.1|[42m 200 [0m|     4.1906ms|   match|[44m GET     [0m /api/v1/user/query   r:/api/v1/user/query
+2022/04/13 16:19:33.149  [I] [server.go:238]  http server Running on http://:8080
+2022/04/13 16:19:38.051  [I] [news.go:54]  [AddNews] u.Ctx.Input.RequestBody: {
+    "title": "测试文章标题",
+    "type": 1,
+    "text": "测试文章内容"
+}
+
+2022/04/13 16:19:38.051  [I] [news.go:55]  [AddNews] req: {测试文章标题 1 1 测试文章内容}
+
+2022/04/13 16:19:38.052  [C] [config.go:500]  the request url is  /api/v1/news/add
+2022/04/13 16:19:38.052  [C] [config.go:501]  Handler crashed with error <Ormer> table: `dataStructLearningWeb/dao.News` not found, make sure it was registered with `RegisterModel()`
+2022/04/13 16:19:38.052  [C] [config.go:507]  D:/Program Files/Go/src/runtime/panic.go:838
+2022/04/13 16:19:38.052  [C] [config.go:507]  D:/goproject/pkg/mod/github.com/astaxie/beego@v1.12.3/orm/orm.go:114
+2022/04/13 16:19:38.052  [C] [config.go:507]  D:/goproject/pkg/mod/github.com/astaxie/beego@v1.12.3/orm/orm.go:163
+2022/04/13 16:19:38.052  [C] [config.go:507]  D:/goproject/src/libo.explorer/dataStructLearningWeb/dao/daonews/news.go:12
+2022/04/13 16:19:38.052  [C] [config.go:507]  D:/goproject/src/libo.explorer/dataStructLearningWeb/biz/biznews/news.go:31
+2022/04/13 16:19:38.052  [C] [config.go:507]  D:/goproject/src/libo.explorer/dataStructLearningWeb/controllers/news.go:57
+2022/04/13 16:19:38.052  [C] [config.go:507]  D:/Program Files/Go/src/reflect/value.go:556
+2022/04/13 16:19:38.052  [C] [config.go:507]  D:/Program Files/Go/src/reflect/value.go:339
+2022/04/13 16:19:38.052  [C] [config.go:507]  D:/goproject/pkg/mod/github.com/beego/beego/v2@v2.0.2/server/web/router.go:1200
+2022/04/13 16:19:38.053  [C] [config.go:507]  D:/goproject/pkg/mod/github.com/beego/beego/v2@v2.0.2/server/web/filter.go:83
+2022/04/13 16:19:38.053  [C] [config.go:507]  D:/goproject/pkg/mod/github.com/beego/beego/v2@v2.0.2/server/web/router.go:973
+2022/04/13 16:19:38.053  [C] [config.go:507]  D:/Program Files/Go/src/net/http/server.go:2916
+2022/04/13 16:19:38.053  [C] [config.go:507]  D:/Program Files/Go/src/net/http/server.go:1966
+2022/04/13 16:19:38.053  [C] [config.go:507]  D:/Program Files/Go/src/runtime/asm_amd64.s:1571
+2022/04/13 16:21:55.904  [I] [server.go:238]  http server Running on http://:8080
+2022/04/13 19:40:35.962  [I] [server.go:238]  http server Running on http://:8080
+2022/04/13 19:40:40.210  [I] [news.go:54]  [AddNews] u.Ctx.Input.RequestBody: {
+    "title": "测试文章标题",
+    "type": 1,
+    "text": "测试文章内容"
+}
+
+2022/04/13 19:40:40.210  [I] [news.go:55]  [AddNews] req: {测试文章标题 1 1 测试文章内容}
+
+2022/04/13 19:40:40.258  [E] [news.go:59]  [AddNews]  biznews.AddNews, err: Error 1054: Unknown column 'offset' in 'field list'
+
+2022/04/13 19:41:34.062  [I] [server.go:238]  http server Running on http://:8080
+2022/04/13 19:45:12.911  [I] [server.go:238]  http server Running on http://:8080
+2022/04/13 19:45:16.221  [I] [news.go:54]  [AddNews] u.Ctx.Input.RequestBody: {
+    "title": "测试文章标题",
+    "type": 1,
+    "text": "测试文章内容"
+}
+
+2022/04/13 19:45:16.221  [I] [news.go:55]  [AddNews] req: {测试文章标题 1 1 测试文章内容}
+
+2022/04/13 19:45:16.226  [E] [news.go:59]  [AddNews]  biznews.AddNews, err: Error 1054: Unknown column 'offset' in 'field list'
+
+2022/04/13 19:46:27.080  [I] [server.go:238]  http server Running on http://:8080
+2022/04/13 19:46:51.746  [I] [server.go:238]  http server Running on http://:8080
+2022/04/13 19:46:54.125  [I] [news.go:54]  [AddNews] u.Ctx.Input.RequestBody: {
+    "title": "测试文章标题",
+    "type": 1,
+    "text": "测试文章内容"
+}
+
+2022/04/13 19:46:54.125  [I] [news.go:55]  [AddNews] req: {测试文章标题 1 1 测试文章内容}
+
+2022/04/13 19:46:54.138  [D] [router.go:1272]  |      127.0.0.1|[42m 200 [0m|    13.3054ms|   match|[46m POST    [0m /api/v1/news/add   r:/api/v1/news/add
+2022/04/13 19:48:39.741  [D] [router.go:1272]  |      127.0.0.1|[42m 200 [0m|      1.015ms|   match|[44m GET     [0m /api/v1/news/query   r:/api/v1/news/query
+2022/04/13 19:49:44.986  [I] [server.go:238]  http server Running on http://:8080
+2022/04/13 19:52:20.889  [I] [server.go:238]  http server Running on http://:8080
+2022/04/13 19:52:23.561  [D] [router.go:1272]  |      127.0.0.1|[42m 200 [0m|     3.7893ms|   match|[44m GET     [0m /api/v1/news/query   r:/api/v1/news/query
+2022/04/13 19:54:10.664  [I] [news.go:134]  [UpdateNews] u.Ctx.Input.RequestBody: {
+    "id": 1,
+    "title": "测试文章标题2",
+    "type": 2,
+    "text": "测试文章内容2",
+    "is_del": 0
+}
+
+2022/04/13 19:54:10.664  [I] [news.go:135]  [UpdateNews] req: {1 测试文章标题2 1 2 测试文章内容2 0}
+
+2022/04/13 19:54:10.669  [C] [config.go:500]  the request url is  /api/v1/news/update
+2022/04/13 19:54:10.669  [C] [config.go:501]  Handler crashed with error wrong field/column name `text`
+2022/04/13 19:54:10.669  [C] [config.go:507]  D:/Program Files/Go/src/runtime/panic.go:838
+2022/04/13 19:54:10.669  [C] [config.go:507]  D:/goproject/pkg/mod/github.com/astaxie/beego@v1.12.3/orm/db.go:730
+2022/04/13 19:54:10.669  [C] [config.go:507]  D:/goproject/pkg/mod/github.com/astaxie/beego@v1.12.3/orm/orm_queryset.go:199
+2022/04/13 19:54:10.669  [C] [config.go:507]  D:/goproject/src/libo.explorer/dataStructLearningWeb/dao/daonews/news.go:48
+2022/04/13 19:54:10.669  [C] [config.go:507]  D:/goproject/src/libo.explorer/dataStructLearningWeb/biz/biznews/news.go:84
+2022/04/13 19:54:10.669  [C] [config.go:507]  D:/goproject/src/libo.explorer/dataStructLearningWeb/controllers/news.go:137
+2022/04/13 19:54:10.669  [C] [config.go:507]  D:/Program Files/Go/src/reflect/value.go:556
+2022/04/13 19:54:10.670  [C] [config.go:507]  D:/Program Files/Go/src/reflect/value.go:339
+2022/04/13 19:54:10.670  [C] [config.go:507]  D:/goproject/pkg/mod/github.com/beego/beego/v2@v2.0.2/server/web/router.go:1200
+2022/04/13 19:54:10.670  [C] [config.go:507]  D:/goproject/pkg/mod/github.com/beego/beego/v2@v2.0.2/server/web/filter.go:83
+2022/04/13 19:54:10.670  [C] [config.go:507]  D:/goproject/pkg/mod/github.com/beego/beego/v2@v2.0.2/server/web/router.go:973
+2022/04/13 19:54:10.670  [C] [config.go:507]  D:/Program Files/Go/src/net/http/server.go:2916
+2022/04/13 19:54:10.670  [C] [config.go:507]  D:/Program Files/Go/src/net/http/server.go:1966
+2022/04/13 19:54:10.670  [C] [config.go:507]  D:/Program Files/Go/src/runtime/asm_amd64.s:1571
+2022/04/13 19:58:19.921  [I] [server.go:238]  http server Running on http://:8080
+2022/04/13 19:58:23.431  [I] [news.go:134]  [UpdateNews] u.Ctx.Input.RequestBody: {
+    "id": 1,
+    "title": "测试文章标题2",
+    "type": 2,
+    "text": "测试文章内容2",
+    "is_del": 0
+}
+
+2022/04/13 19:58:23.431  [I] [news.go:135]  [UpdateNews] req: {1 测试文章标题2 1 2 测试文章内容2 0}
+
+2022/04/13 19:58:23.443  [D] [router.go:1272]  |      127.0.0.1|[42m 200 [0m|    13.3743ms|   match|[46m POST    [0m /api/v1/news/update   r:/api/v1/news/update
+2022/04/13 20:14:32.269  [I] [server.go:238]  http server Running on http://:8080
+2022/04/13 20:24:59.646  [D] [router.go:1272]  |      127.0.0.1|[42m 200 [0m|   217.7374ms|   match|[44m GET     [0m /api/v1/resources/query   r:/api/v1/resources/query
+2022/04/13 20:27:14.827  [D] [router.go:1272]  |      127.0.0.1|[42m 200 [0m|    90.6921ms|   match|[44m GET     [0m /api/v1/resources/query   r:/api/v1/resources/query
+2022/04/13 20:29:06.349  [I] [server.go:238]  http server Running on http://:8080
+2022/04/13 20:29:17.542  [I] [resources.go:48]  [QueryResourcesList] prefix: , limit: 
+2022/04/13 20:29:17.659  [D] [router.go:1272]  |      127.0.0.1|[42m 200 [0m|   117.2326ms|   match|[44m GET     [0m /api/v1/resources/query   r:/api/v1/resources/query
+2022/04/13 20:29:58.246  [I] [resources.go:48]  [QueryResourcesList] prefix: 下载, limit: 
+2022/04/13 20:29:58.299  [D] [router.go:1272]  |      127.0.0.1|[42m 200 [0m|    53.0777ms|   match|[44m GET     [0m /api/v1/resources/query   r:/api/v1/resources/query
+2022/04/13 20:32:29.442  [I] [resources.go:48]  [QueryResourcesList] prefix: audio/, limit: 
+2022/04/13 20:32:29.546  [D] [router.go:1272]  |      127.0.0.1|[42m 200 [0m|   104.9794ms|   match|[44m GET     [0m /api/v1/resources/query   r:/api/v1/resources/query
+2022/04/13 20:32:38.873  [I] [resources.go:48]  [QueryResourcesList] prefix: audio/Don't, limit: 
+2022/04/13 20:32:38.908  [D] [router.go:1272]  |      127.0.0.1|[42m 200 [0m|    34.1754ms|   match|[44m GET     [0m /api/v1/resources/query   r:/api/v1/resources/query

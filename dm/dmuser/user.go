@@ -70,6 +70,7 @@ type UpdateUserReq struct {
 	IsAdmin    int8   `json:"is_admin"`
 	IsDel      int8   `json:"is_del"`
 	CreateNews int8   `json:"create_news"`
+	UserId     int64  `json:"user_id"`
 }
 
 func (p *UpdateUserReq) CheckParam() error {

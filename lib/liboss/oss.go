@@ -7,9 +7,9 @@ import (
 
 const (
 	// 上传之前要删掉
-	ACCESSKEY_ID = ""
+	ACCESSKEY_ID = "LTAI5tJm78FjDDwT2WG9wean"
 	// 上传之前要删掉
-	ACCESSKEY_SECRET = ""
+	ACCESSKEY_SECRET = "dSqQeCQSoYHbcrDkQLtBKzxpGl47dj"
 	ENDPOINT = "oss-cn-beijing.aliyuncs.com"
 	BUCKET_NAME = "datastruct-resources"
 	EXPIRATION = 300

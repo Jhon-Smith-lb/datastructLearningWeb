@@ -44,7 +44,7 @@ func UpdateNews(req *dao.News, o orm.Ormer) error {
 	mp["text"] = req.Text
 	mp["updated_at"] = req.UpdatedAt
 	mp["is_del"] = req.IsDel
-	table := &dao.User{}
+	table := &dao.News{}
 	_, err := o.QueryTable(table).Filter("id", req.Id).Update(mp)
 	if err != nil {
 		logs.Error("[UpdateNews] o.Update, err: %v, req: %v", err, lib.PointerToString(req))

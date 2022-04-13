@@ -23,7 +23,7 @@ func AddNews(req *dmnews.AddNewsReq) (int64, error) {
 	dbReq := dao.NewNews()
 	dbReq.Title = req.Title
 	dbReq.UserId = req.UserId
-	dbReq.Type = req.Type
+	dbReq.Type = int16(req.Type)
 	dbReq.Text = req.Text
 	dbReq.CreatedAt = time.Now()
 	dbReq.UpdatedAt = time.Now()

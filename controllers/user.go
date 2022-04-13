@@ -116,7 +116,7 @@ func (p *UserController) AddUser() {
 // @Title QueryUser
 // @Description 根据过滤条件查询用户
 // @Success 200 {object} models.User
-func (p *UserController) QueryUser() {
+func (p *UserController) QueryUserList() {
 	username := p.GetString("username")
 	number := p.GetString("number")
 	offsetStr := p.GetString("offset")
@@ -128,7 +128,7 @@ func (p *UserController) QueryUser() {
 	if offsetStr != "" {
 		offset, err = strconv.ParseInt(offsetStr, 10, 64)
 		if err != nil {
-			logs.Error("[QueryUser] strconv.ParseInt, err: %v\n", err)
+			logs.Error("[QueryUserList] strconv.ParseInt, err: %v\n", err)
 			p.Data["json"] = utils.SetResp(dm.HTTP_OK, nil, errors.New("param is incorrect").Error())
 			p.ServeJSON()
 			p.StopRun()
@@ -138,7 +138,7 @@ func (p *UserController) QueryUser() {
 	if limitStr != "" {
 		limit, err = strconv.ParseInt(limitStr, 10, 64)
 		if err != nil {
-			logs.Error("[QueryUser] strconv.ParseInt, err: %v\n", err)
+			logs.Error("[QueryUserList] strconv.ParseInt, err: %v\n", err)
 			p.Data["json"] = utils.SetResp(dm.HTTP_OK, nil, errors.New("param is incorrect").Error())
 			p.ServeJSON()
 			p.StopRun()
@@ -153,7 +153,7 @@ func (p *UserController) QueryUser() {
 
 	dmUserList, total, err := bizuser.QueryUserList(bizReq)
 	if err != nil {
-		logs.Error("[QueryUser] bizuser.QueryUserList, err: %v, bizReq: %v\n", err, lib.PointerToString(bizReq))
+		logs.Error("[QueryUserList] bizuser.QueryUserList, err: %v, bizReq: %v\n", err, lib.PointerToString(bizReq))
 		p.Data["json"] = utils.SetResp(dm.HTTP_OK, nil, err.Error())
 		p.ServeJSON()
 		p.StopRun()
@@ -176,7 +176,7 @@ func (p *UserController) UpdateUser() {
 	var req dmuser.UpdateUserReq
 	json.Unmarshal(p.Ctx.Input.RequestBody, &req)
 
-	req.Id = p.Data["user_id"].(int64)
+	req.UserId = p.Data["user_id"].(int64)
 
 	logs.Info("[UpdateUser] u.Ctx.Input.RequestBody: %v\n", string(p.Ctx.Input.RequestBody))
 	logs.Info("[UpdateUser] req: %v\n", req)

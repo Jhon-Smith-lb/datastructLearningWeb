@@ -6,6 +6,7 @@ import (
 	"dataStructLearningWeb/dm/dmuser"
 	"dataStructLearningWeb/lib"
 	"errors"
+	"time"
 
 	"github.com/astaxie/beego/logs"
 	"github.com/astaxie/beego/orm"
@@ -24,6 +25,8 @@ func AddUser(req *dmuser.AddUserReq) (int64, error) {
 	dbReq.Password = req.Password
 	dbReq.IsAdmin = req.IsAdmin
 	dbReq.CreateNews = req.CreateNews
+	dbReq.CreatedAt = time.Now()
+	dbReq.UpdatedAt = time.Now()
 
 	userId, err := daouser.AddUser(dbReq, o)
 	if err != nil {
@@ -40,7 +43,7 @@ func UpdateUser(req *dmuser.UpdateUserReq) error {
 	}
 
 	// 更新之前查询一下用户是否存在
-	_, err := daouser.GetUserById(req.Id)
+	user, err := daouser.GetUserById(req.Id)
 	if err != nil {
 		// 查询不到
 		if err == orm.ErrNoRows {
@@ -48,6 +51,11 @@ func UpdateUser(req *dmuser.UpdateUserReq) error {
 			return errors.New("找不到用户")
 		}
 		return err
+	}
+
+	if user.IsAdmin == 1 {
+		logs.Error("[UpdateUser] err: user.IsAdmin == 1")
+		return errors.New("该用户是管理员，不可修改")
 	}
 
 	o := orm.NewOrm()
