@@ -6,6 +6,7 @@ import (
 )
 
 const (
+	// oss相关配置
 	// 上传之前要删掉
 	ACCESSKEY_ID = ""
 	// 上传之前要删掉

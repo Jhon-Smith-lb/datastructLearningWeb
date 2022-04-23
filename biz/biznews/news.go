@@ -18,12 +18,24 @@ func AddNews(req *dmnews.AddNewsReq) (int64, error) {
 	if err := req.CheckParam(); err != nil {
 		return 0, err
 	}
+
+	dbUser, err := daouser.GetUserById(req.UserId)
+	if err != nil {
+		logs.Error("[AddNews] daouser.GetUserById, err: %v, req: %v", err, lib.PointerToString(req))
+		return 0, err
+	}
+
+	if *dbUser.CreateNews == 0 {
+		logs.Error("[AddNews] err: 没有创建文章的权限, req: %v", lib.PointerToString(req))
+		return 0, errors.New("没有创建文章的权限")
+	}
+
 	o := orm.NewOrm()
 
 	dbReq := dao.NewNews()
 	dbReq.Title = req.Title
 	dbReq.UserId = req.UserId
-	dbReq.Type = req.Type
+	dbReq.Type = int16(req.Type)
 	dbReq.Text = req.Text
 	dbReq.CreatedAt = time.Now()
 	dbReq.UpdatedAt = time.Now()
@@ -65,7 +77,7 @@ func UpdateNews(req *dmnews.UpdateNewsReq) error {
 			return err
 		}
 		// 是不是管理员
-		if user.IsAdmin != dmuser.IS_ADMIN {
+		if *user.IsAdmin != dmuser.IS_ADMIN {
 			return errors.New("没有修改该文章的权限")
 		}
 	}
@@ -97,6 +109,7 @@ func QueryNewsList(req *dmnews.QueryNewsOption) ([]*dmnews.News, int64, error) {
 
 	dbQueryNewsOption := dao.NewQueryNewsOption()
 	dbQueryNewsOption.Title = req.Title
+	dbQueryNewsOption.Type = int16(req.Type)
 	dbQueryNewsOption.Offset = req.Offset
 	dbQueryNewsOption.Limit = req.Limit
 

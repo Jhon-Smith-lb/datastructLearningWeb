@@ -26,14 +26,25 @@ func QueryNewsList(req *dao.QueryNewsOption) ([]*dao.News, int64, error) {
 	if req.Title != "" {
 		qs = qs.Filter("title__contains", req.Title)
 	}
+	if req.Type != 0 {
+		qs = qs.Filter("type", req.Type)
+	}
 
-	qs.Offset(req.Offset).Limit(req.Limit)
-	_, err := qs.All(&resp)
+	qs = qs.Filter("is_del", 0)
+
+	count, err := qs.Count()
+	if err != nil {
+		logs.Error("[QueryNewsList] qs.Count, err: %v, req: %v", err, lib.PointerToString(req))
+		return nil, 0, err
+	}
+
+	qs = qs.Offset(req.Offset).Limit(req.Limit)
+	_, err = qs.All(&resp)
 	if err != nil {
 		logs.Error("[QueryNewsList] qs.All, err: %v, req: %v", err, lib.PointerToString(req))
 		return nil, 0, err
 	}
-	return resp, 0, nil
+	return resp, count, nil
 }
 
 func UpdateNews(req *dao.News, o orm.Ormer) error {
@@ -44,7 +55,7 @@ func UpdateNews(req *dao.News, o orm.Ormer) error {
 	mp["text"] = req.Text
 	mp["updated_at"] = req.UpdatedAt
 	mp["is_del"] = req.IsDel
-	table := &dao.User{}
+	table := &dao.News{}
 	_, err := o.QueryTable(table).Filter("id", req.Id).Update(mp)
 	if err != nil {
 		logs.Error("[UpdateNews] o.Update, err: %v, req: %v", err, lib.PointerToString(req))

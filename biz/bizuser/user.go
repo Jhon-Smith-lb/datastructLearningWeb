@@ -6,6 +6,8 @@ import (
 	"dataStructLearningWeb/dm/dmuser"
 	"dataStructLearningWeb/lib"
 	"errors"
+	"fmt"
+	"time"
 
 	"github.com/astaxie/beego/logs"
 	"github.com/astaxie/beego/orm"
@@ -21,9 +23,15 @@ func AddUser(req *dmuser.AddUserReq) (int64, error) {
 	dbReq := dao.NewUser()
 	dbReq.Username = req.Username
 	dbReq.Number = req.Number
-	dbReq.Password = req.Password
-	dbReq.IsAdmin = req.IsAdmin
-	dbReq.CreateNews = req.CreateNews
+	dbReq.Password = &req.Password
+	dbReq.IsAdmin = &req.IsAdmin
+	dbReq.Status = &req.Status
+	dbReq.CreateNews = &req.CreateNews
+	dbReq.CreatedAt = time.Now()
+	dbReq.UpdatedAt = time.Now()
+
+	var isDel int8 = 0
+	dbReq.IsDel = &isDel
 
 	userId, err := daouser.AddUser(dbReq, o)
 	if err != nil {
@@ -40,7 +48,7 @@ func UpdateUser(req *dmuser.UpdateUserReq) error {
 	}
 
 	// 更新之前查询一下用户是否存在
-	_, err := daouser.GetUserById(req.Id)
+	user, err := daouser.GetUserById(req.Id)
 	if err != nil {
 		// 查询不到
 		if err == orm.ErrNoRows {
@@ -50,17 +58,30 @@ func UpdateUser(req *dmuser.UpdateUserReq) error {
 		return err
 	}
 
+	if *user.IsAdmin == 1 {
+		logs.Error("[UpdateUser] err: user.IsAdmin == 1")
+		return errors.New("该用户是管理员，不可修改")
+	}
+
 	o := orm.NewOrm()
+
+	var number string
+	if req.IsDel == 1 {
+		// 需要删除
+		number = fmt.Sprintf("%v|%v", req.Number, time.Now().Unix())
+	}
 
 	dbReq := dao.NewUser()
 	dbReq.Id = req.Id
 	dbReq.Username = req.Username
-	dbReq.Number = req.Number
-	dbReq.Password = req.Password
-	dbReq.Status = req.Status
-	dbReq.IsAdmin = req.IsAdmin
-	dbReq.IsDel = req.IsDel
-	dbReq.CreateNews = req.CreateNews
+	dbReq.Number = number
+	if req.Password != "" {
+		dbReq.Password = &req.Password
+	}
+	dbReq.Status = &req.Status
+	dbReq.IsAdmin = &req.IsAdmin
+	dbReq.IsDel = &req.IsDel
+	dbReq.CreateNews = &req.CreateNews
 
 	if err := daouser.UpdateUser(dbReq, o); err != nil {
 		logs.Error("[UpdateUser] daouser.UpdateUser, err: %v, dbReq: %v", err, lib.PointerToString(dbReq))
@@ -94,13 +115,13 @@ func QueryUserList(req *dmuser.QueryUserOption) ([]*dmuser.User, int64, error) {
 			Id:        dbUser.Id,
 			Username:  dbUser.Username,
 			Number:    dbUser.Number,
-			Password:  dbUser.Password,
-			Status:    dbUser.Status,
-			IsAdmin:   dbUser.IsAdmin,
+			Password:  *dbUser.Password,
+			Status:    *dbUser.Status,
+			IsAdmin:   *dbUser.IsAdmin,
 			CreatedAt: dbUser.CreatedAt,
 			UpdatedAt: dbUser.UpdatedAt,
-			IsDel:     dbUser.IsDel,
-			CreateNews: dbUser.CreateNews,
+			IsDel:     *dbUser.IsDel,
+			CreateNews: *dbUser.CreateNews,
 		})
 	}
 
@@ -123,13 +144,70 @@ func GetUserById(userId int64) (*dmuser.User, error) {
 	dmUser.Id = dbUser.Id
 	dmUser.Username = dbUser.Username
 	dmUser.Number = dbUser.Number
-	dmUser.Password = dbUser.Password
-	dmUser.Status = dbUser.Status
-	dmUser.IsAdmin = dbUser.IsAdmin
+	dmUser.Password = *dbUser.Password
+	dmUser.Status = *dbUser.Status
+	dmUser.IsAdmin = *dbUser.IsAdmin
 	dmUser.CreatedAt = dbUser.CreatedAt
 	dmUser.UpdatedAt = dbUser.UpdatedAt
-	dmUser.IsDel = dbUser.IsDel
-	dmUser.CreateNews = dbUser.CreateNews
+	dmUser.IsDel = *dbUser.IsDel
+	dmUser.CreateNews = *dbUser.CreateNews
 
 	return dmUser, nil
+}
+
+func ResetPwd(req *dmuser.ResetPwdReq) error {
+	if err := req.CheckParam(); err != nil {
+		logs.Info("[ResetPwd] req.CheckParam(), err: %v, req: %v", err, lib.PointerToString(req))
+		return err
+	}
+
+	user, err := daouser.GetUserById(req.UserId)
+	if err != nil {
+		logs.Error("[ResetPwd] daouser.GetUserById, err: %v, req: %v", err, lib.PointerToString(req))
+		return err
+	}
+
+	// 被修改人是管理员
+	if *user.IsAdmin == 1 {
+		logs.Error("[ResetPwd] err: 该用户为管理员，不能修改自己的密码, req: %v", lib.PointerToString(req))
+		return errors.New("您是管理员，不能修改自己的密码，如需修改，请联系研发同学")
+	} 
+
+	if *user.Password != req.OldPwd {
+		// 旧密码不正确
+		logs.Info("[ResetPwd] err: 旧密码不正确, req: %v", lib.PointerToString(req))
+		return errors.New("旧密码不正确")
+	}
+
+	dbReq := dao.NewUser()
+	dbReq.Id = req.UserId
+	dbReq.Password = &req.NewPwd
+
+	o := orm.NewOrm()
+	if err := daouser.UpdateUser(dbReq, o); err != nil {
+		logs.Error("[ResetPwd] err: %v, dbReq: %v", dbReq)
+		return err
+	}
+
+	return nil
+}
+
+func CheckPwd(req *dmuser.CheckPwdReq) error {
+	if err := req.CheckParam(); err != nil {
+		logs.Info("[CheckPwd] req.CheckParam(), err: %v, req: %v", err, lib.PointerToString(req))
+		return err
+	}
+
+	user, err := daouser.GetUserById(req.UserId)
+	if err != nil {
+		logs.Error("[CheckPwd] daouser.GetUserById, err: %v, req: %v", err, lib.PointerToString(req))
+		return err
+	}
+
+	if *user.Password != req.Pwd {
+		logs.Info("[CheckPwd] *user.Password != req.Pwd, err: 旧密码不正确, req: %v", lib.PointerToString(req))
+		return errors.New("旧密码不正确")
+	}
+
+	return nil
 }

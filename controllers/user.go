@@ -9,6 +9,7 @@ import (
 	"dataStructLearningWeb/utils"
 	"encoding/json"
 	"errors"
+	"fmt"
 	"strconv"
 	"strings"
 
@@ -52,10 +53,16 @@ func (p *UserController) Prepare() {
 	}
 
 	if user.IsAdmin != dmuser.IS_ADMIN {
-		logs.Error("[Prepare] bizuser.GetUserById, err: user.IsAdmin != dmuser.IS_ADMIN")
-		p.Data["json"] = utils.SetResp(dm.HTTP_OK, nil, errors.New("没有权限").Error())
-		p.ServeJSON()
-		p.StopRun()
+		urlPtr := p.Ctx.Request.URL
+		urlStr := fmt.Sprintf("%v", urlPtr)
+		urlArr := strings.Split(urlStr, "/")
+		logs.Info("urlArr: %v, len: %v", urlArr, len(urlArr))
+		if urlArr[4] == "add" || urlArr[4] == "update" || strings.HasPrefix(urlArr[4], "query") {
+			logs.Error("[Prepare] bizuser.GetUserById, err: 不是管理员但访问了add, update, query三者中的一条路径")
+			p.Data["json"] = utils.SetResp(dm.HTTP_OK, nil, errors.New("没有权限").Error())
+			p.ServeJSON()
+			p.StopRun()
+		}
 	} 
 
 	userId := claims.ID
@@ -116,7 +123,7 @@ func (p *UserController) AddUser() {
 // @Title QueryUser
 // @Description 根据过滤条件查询用户
 // @Success 200 {object} models.User
-func (p *UserController) QueryUser() {
+func (p *UserController) QueryUserList() {
 	username := p.GetString("username")
 	number := p.GetString("number")
 	offsetStr := p.GetString("offset")
@@ -128,7 +135,7 @@ func (p *UserController) QueryUser() {
 	if offsetStr != "" {
 		offset, err = strconv.ParseInt(offsetStr, 10, 64)
 		if err != nil {
-			logs.Error("[QueryUser] strconv.ParseInt, err: %v\n", err)
+			logs.Error("[QueryUserList] strconv.ParseInt, err: %v\n", err)
 			p.Data["json"] = utils.SetResp(dm.HTTP_OK, nil, errors.New("param is incorrect").Error())
 			p.ServeJSON()
 			p.StopRun()
@@ -138,7 +145,7 @@ func (p *UserController) QueryUser() {
 	if limitStr != "" {
 		limit, err = strconv.ParseInt(limitStr, 10, 64)
 		if err != nil {
-			logs.Error("[QueryUser] strconv.ParseInt, err: %v\n", err)
+			logs.Error("[QueryUserList] strconv.ParseInt, err: %v\n", err)
 			p.Data["json"] = utils.SetResp(dm.HTTP_OK, nil, errors.New("param is incorrect").Error())
 			p.ServeJSON()
 			p.StopRun()
@@ -153,7 +160,7 @@ func (p *UserController) QueryUser() {
 
 	dmUserList, total, err := bizuser.QueryUserList(bizReq)
 	if err != nil {
-		logs.Error("[QueryUser] bizuser.QueryUserList, err: %v, bizReq: %v\n", err, lib.PointerToString(bizReq))
+		logs.Error("[QueryUserList] bizuser.QueryUserList, err: %v, bizReq: %v\n", err, lib.PointerToString(bizReq))
 		p.Data["json"] = utils.SetResp(dm.HTTP_OK, nil, err.Error())
 		p.ServeJSON()
 		p.StopRun()
@@ -176,7 +183,7 @@ func (p *UserController) UpdateUser() {
 	var req dmuser.UpdateUserReq
 	json.Unmarshal(p.Ctx.Input.RequestBody, &req)
 
-	req.Id = p.Data["user_id"].(int64)
+	req.UserId = p.Data["user_id"].(int64)
 
 	logs.Info("[UpdateUser] u.Ctx.Input.RequestBody: %v\n", string(p.Ctx.Input.RequestBody))
 	logs.Info("[UpdateUser] req: %v\n", req)
@@ -192,6 +199,66 @@ func (p *UserController) UpdateUser() {
 	p.ServeJSON()
 }
 
+func (p *UserController) GetUserByToken() {
+	userId := p.Data["user_id"].(int64)
+	bizUser, err := bizuser.GetUserById(userId)
+	if err != nil {
+		logs.Error("[GetUserById] bizuser.GetUserById, err: %v, userId: %v\n", err, userId)
+		p.Data["json"] = utils.SetResp(dm.HTTP_OK, nil, err.Error())
+		p.ServeJSON()
+		p.StopRun()
+	}
 
+	controllerUser := NewUser()
+	controllerUser.Username = bizUser.Username
+	controllerUser.Number = bizUser.Number
+	controllerUser.IsAdmin = bizUser.IsAdmin
+	controllerUser.CreateNews = bizUser.CreateNews
+
+	data := map[string]interface{}{
+		"user": controllerUser,
+	}
+
+	p.Data["json"] = utils.SetResp(dm.HTTP_OK, data, "")
+	p.ServeJSON()
+}
+
+func (p *UserController) ResetPwd() {
+	var req dmuser.ResetPwdReq
+	json.Unmarshal(p.Ctx.Input.RequestBody, &req)
+
+	req.UserId =  p.Data["user_id"].(int64)
+
+	logs.Info("[ResetPwd] req: %v", lib.PointerToString(&req))
+
+	if err := bizuser.ResetPwd(&req); err != nil {
+		logs.Error("[GetUserById] bizuser.GetUserById, err: %v, req: %v\n", err, lib.PointerToString(&req))
+		p.Data["json"] = utils.SetResp(dm.HTTP_OK, nil, err.Error())
+		p.ServeJSON()
+		p.StopRun()
+	}
+
+	p.Data["json"] = utils.SetResp(dm.HTTP_OK, nil, "")
+	p.ServeJSON()
+}
+
+func (p *UserController) CheckPwd() {
+	var req dmuser.CheckPwdReq
+	json.Unmarshal(p.Ctx.Input.RequestBody, &req)
+
+	req.UserId =  p.Data["user_id"].(int64)
+
+	logs.Info("[CheckPwd] req: %v", lib.PointerToString(&req))
+
+	if err := bizuser.CheckPwd(&req); err != nil {
+		logs.Error("[CheckPwd] bizuser.CheckPwd, err: %v, req: %v\n", err, lib.PointerToString(&req))
+		p.Data["json"] = utils.SetResp(dm.HTTP_OK, nil, err.Error())
+		p.ServeJSON()
+		p.StopRun()
+	}
+
+	p.Data["json"] = utils.SetResp(dm.HTTP_OK, nil, "")
+	p.ServeJSON()
+}
 
 

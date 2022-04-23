@@ -31,23 +31,47 @@ func QueryUserList(req *dao.QueryUserOption) ([]*dao.User, int64, error) {
 		qs = qs.Filter("username__contains", req.Username)
 	}
 
-	qs.Offset(req.Offset).Limit(req.Limit)
-	_, err := qs.All(&resp)
+	qs = qs.Filter("is_del", 0)
+
+	count, err := qs.Count()
+	if err != nil {
+		logs.Error("[QueryUserList] qs.Count, err: %v, req: %v", err, lib.PointerToString(req))
+		return nil, 0, err
+	}
+
+	qs = qs.Offset(req.Offset).Limit(req.Limit)
+	_, err = qs.All(&resp)
 	if err != nil {
 		logs.Error("[QueryUserList] qs.All, err: %v, req: %v", err, lib.PointerToString(req))
 		return nil, 0, err
 	}
-	return resp, 0, nil
+	return resp, count, nil
 }
 
 func UpdateUser(req *dao.User, o orm.Ormer) error {
 	mp := make(map[string]interface{}, 0)
-	mp["username"] = req.Username
-	mp["number"] = req.Number
-	mp["password"] = req.Password
-	mp["status"] = req.Status
-	mp["is_admin"] = req.IsAdmin
-	mp["is_del"] = req.IsDel
+	if req.Username != "" {
+		mp["username"] = req.Username
+	}
+	if req.Number != "" {
+		mp["number"] = req.Number
+	}
+	if req.Password != nil {
+		mp["password"] = *req.Password
+	}
+	if req.Status != nil {
+		mp["status"] = *req.Status
+	}
+	if req.IsAdmin != nil {
+		mp["is_admin"] = *req.IsAdmin
+	}
+	if req.IsDel != nil {
+		mp["is_del"] = *req.IsDel
+	}
+	if req.CreateNews != nil {
+		mp["create_news"] = *req.CreateNews
+	}
+	
 	table := &dao.User{}
 	_, err := o.QueryTable(table).Filter("id", req.Id).Update(mp)
 	if err != nil {
