@@ -65,9 +65,10 @@ type News struct {
 }
 
 type QueryNewsOption struct {
-	Title  string
-	Offset int64
-	Limit  int64
+	Title  string `json:"title"`
+	Type   NewsType `json:"type"`
+	Offset int64  `json:"offset"`
+	Limit  int64  `json:"limit"`
 }
 
 func (p *QueryNewsOption) CheckParam() error {

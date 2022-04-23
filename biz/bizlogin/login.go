@@ -39,6 +39,18 @@ func Login(number, password string) (string, error) {
 		return "", errors.New("登录过于频繁")
 	}
 
+	// 校验密码
+	if *user.Password != password {
+		logs.Info("[Login] *user.Password != password, err: 密码错误, number: %v", number)
+		return "", errors.New("账号或密码错误")
+	}
+
+	// 校验账号状态
+	if *user.Status != 0 {
+		logs.Info("[Login] *user.Status != 0, err: 账号状态为不可用, number: %v", number)
+		return "", errors.New("账号状态为不可用")
+	}
+
 	// 生成token
 	token, err := generateToken(user.Id, user.Username)
 	if err != nil {

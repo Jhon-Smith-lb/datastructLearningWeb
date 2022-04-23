@@ -28,7 +28,7 @@ func QueryResourcesList(prefix string, limit int) ([]*dmresources.Resources, err
 				logs.Error("[QueryResourcesList] err: %v, prefix: %v, limit: %v", err, prefix, limit)
 				continue
 			}
-			resources.Name = arr[1]
+			resources.Name = objectProperties.Key
 			resources.Url = signedURL
 			resourcesList = append(resourcesList, resources)
 		} 

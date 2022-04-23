@@ -52,7 +52,7 @@ func (p *NewsController) AddNews() {
 	req.UserId = p.Data["user_id"].(int64)
 
 	logs.Info("[AddNews] u.Ctx.Input.RequestBody: %v\n", string(p.Ctx.Input.RequestBody))
-	logs.Info("[AddNews] req: %v\n", req)
+	logs.Info("[AddNews] req: %v\n", lib.PointerToString(&req))
 
 	newsId, err := biznews.AddNews(&req)
 	if err != nil {
@@ -73,10 +73,15 @@ func (p *NewsController) AddNews() {
 // @Success 200 {object} models.User
 func (p *NewsController) QueryNewsList() {
 	title := p.GetString("title")
+	newsTypeStr := p.GetString("type")
 	offsetStr := p.GetString("offset")
 	limitStr := p.GetString("limit")
+
+	logs.Info("[QueryNewsList] title: %v, typeStr: %v, offsetStr: %v, limitStr: %v", title, newsTypeStr, offsetStr, limitStr)
+
 	var offset int64
 	var limit int64
+	var newsType int64
 	var err error
 
 	if offsetStr != "" {
@@ -88,7 +93,7 @@ func (p *NewsController) QueryNewsList() {
 			p.StopRun()
 		}
 	}
-	
+
 	if limitStr != "" {
 		limit, err = strconv.ParseInt(limitStr, 10, 64)
 		if err != nil {
@@ -99,8 +104,19 @@ func (p *NewsController) QueryNewsList() {
 		}
 	}
 
+	if newsTypeStr != "" {
+		newsType, err = strconv.ParseInt(newsTypeStr, 10, 64)
+		if err != nil {
+			logs.Error("[QueryNewsList] strconv.ParseInt, err: %v\n", err)
+			p.Data["json"] = utils.SetResp(dm.HTTP_OK, nil, errors.New("param is incorrect").Error())
+			p.ServeJSON()
+			p.StopRun()
+		}
+	}
+
 	bizReq := dmnews.NewQueryNewsOption()
 	bizReq.Title = title
+	bizReq.Type = dmnews.NewsType(newsType)
 	bizReq.Offset = offset
 	bizReq.Limit = limit
 
@@ -113,7 +129,7 @@ func (p *NewsController) QueryNewsList() {
 	}
 	data := map[string]interface{}{
 		"news_list": dmNewsList,
-		"total": total,
+		"total":     total,
 	}
 	p.Data["json"] = utils.SetResp(dm.HTTP_OK, data, "")
 	p.ServeJSON()
@@ -132,7 +148,7 @@ func (p *NewsController) UpdateNews() {
 	req.UserId = p.Data["user_id"].(int64)
 
 	logs.Info("[UpdateNews] u.Ctx.Input.RequestBody: %v\n", string(p.Ctx.Input.RequestBody))
-	logs.Info("[UpdateNews] req: %v\n", req)
+	logs.Info("[UpdateNews] req: %v\n", lib.PointerToString(&req))
 
 	if err := biznews.UpdateNews(&req); err != nil {
 		logs.Error("[UpdateNews] biznews.UpdateNews, err: %v\n", err)

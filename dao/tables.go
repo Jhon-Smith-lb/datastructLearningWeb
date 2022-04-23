@@ -15,13 +15,13 @@ type User struct {
 	Id         int64
 	Username   string
 	Number     string
-	Password   string
-	Status     int16
-	IsAdmin    int8
+	Password   *string
+	Status     *int16
+	IsAdmin    *int8
 	CreatedAt  time.Time
 	UpdatedAt  time.Time
-	IsDel      int8
-	CreateNews int8
+	IsDel      *int8
+	CreateNews *int8
 }
 
 func NewUser() *User {
@@ -58,6 +58,7 @@ func NewNews() *News {
 
 type QueryNewsOption struct {
 	Title  string
+	Type   int16
 	Offset int64
 	Limit  int64
 }

@@ -10,16 +10,16 @@ const (
 )
 
 type User struct {
-	Id         int64
-	Username   string
-	Number     string
-	Password   string
-	Status     int16
-	IsAdmin    int8
-	CreatedAt  time.Time
-	UpdatedAt  time.Time
-	IsDel      int8
-	CreateNews int8
+	Id         int64		`json:"id"`
+	Username   string		`json:"username"`
+	Number     string		`json:"number"`
+	Password   string		`json:"password"`
+	Status     int16		`json:"status"`
+	IsAdmin    int8			`json:"is_admin"`
+	CreatedAt  time.Time	`json:"created_at"`
+	UpdatedAt  time.Time	`json:"updated_at"`
+	IsDel      int8			`json:"is_del"`
+	CreateNews int8			`json:"create_news"`
 }
 
 func NewUser() *User {
@@ -31,7 +31,7 @@ type AddUserReq struct {
 	Username   string `json:"username"`
 	Number     string `json:"number"`
 	Password   string `json:"password"`
-	Status     int64  `json:"status"`
+	Status     int16  `json:"status"`
 	IsAdmin    int8   `json:"is_admin"`
 	CreateNews int8   `json:"create_news"`
 }
@@ -74,7 +74,32 @@ type UpdateUserReq struct {
 }
 
 func (p *UpdateUserReq) CheckParam() error {
-	if p.Id == 0 {
+	if p.Id == 0 || p.Username == "" || p.Number == "" {
+		return errors.New("param is incorrect")
+	}
+	return nil
+}
+
+type ResetPwdReq struct {
+	UserId int64 `json:"user_id"`
+	OldPwd string `json:"old_pwd"`
+	NewPwd string `json:"new_pwd"`
+}
+
+func (p *ResetPwdReq) CheckParam() error {
+	if p.UserId == 0 || p.OldPwd == "" || p.NewPwd == "" {
+		return errors.New("param is incorrect")
+	}
+	return nil
+}
+
+type CheckPwdReq struct {
+	UserId int64 `json:"user_id"`
+	Pwd string `json:"pwd"`
+}
+
+func (p *CheckPwdReq) CheckParam() error {
+	if p.Pwd == "" {
 		return errors.New("param is incorrect")
 	}
 	return nil
