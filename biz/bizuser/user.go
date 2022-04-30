@@ -69,6 +69,8 @@ func UpdateUser(req *dmuser.UpdateUserReq) error {
 	if req.IsDel == 1 {
 		// 需要删除
 		number = fmt.Sprintf("%v|%v", req.Number, time.Now().Unix())
+	} else {
+		number = req.Number
 	}
 
 	dbReq := dao.NewUser()

@@ -7729,3 +7729,205 @@
 2022/04/23 11:46:12.295  [I] [server.go:238]  http server Running on http://:8080
 2022/04/23 11:47:22.925  [I] [user.go:59]  urlArr: [ api v1 user query?limit=10], len: 5
 2022/04/23 11:47:22.925  [E] [user.go:61]  [Prepare] bizuser.GetUserById, err: 不是管理员但访问了add, update, query三者中的一条路径
+2022/04/23 12:11:55.427  [I] [server.go:238]  http server Running on http://:8080
+2022/04/23 12:13:25.146  [I] [news.go:80]  [QueryNewsList] title: , typeStr: 1, offsetStr: 0, limitStr: 8
+2022/04/23 12:13:25.689  [D] [router.go:1272]  |      127.0.0.1|[42m 200 [0m|   542.8827ms|   match|[44m GET     [0m /api/v1/news/query   r:/api/v1/news/query
+2022/04/23 12:17:08.807  [I] [news.go:80]  [QueryNewsList] title: , typeStr: 1, offsetStr: 0, limitStr: 8
+2022/04/23 12:17:08.809  [D] [router.go:1272]  |      127.0.0.1|[42m 200 [0m|     2.1169ms|   match|[44m GET     [0m /api/v1/news/query   r:/api/v1/news/query
+2022/04/23 12:17:09.397  [I] [news.go:80]  [QueryNewsList] title: , typeStr: 1, offsetStr: 0, limitStr: 8
+2022/04/23 12:17:09.436  [D] [router.go:1272]  |      127.0.0.1|[42m 200 [0m|    39.2449ms|   match|[44m GET     [0m /api/v1/news/query   r:/api/v1/news/query
+2022/04/23 12:17:09.774  [I] [news.go:80]  [QueryNewsList] title: , typeStr: 1, offsetStr: 0, limitStr: 8
+2022/04/23 12:17:09.795  [D] [router.go:1272]  |      127.0.0.1|[42m 200 [0m|    21.6501ms|   match|[44m GET     [0m /api/v1/news/query   r:/api/v1/news/query
+2022/04/23 12:17:14.825  [I] [news.go:80]  [QueryNewsList] title: , typeStr: 1, offsetStr: 0, limitStr: 8
+2022/04/23 12:17:14.897  [D] [router.go:1272]  |      127.0.0.1|[42m 200 [0m|    71.8097ms|   match|[44m GET     [0m /api/v1/news/query   r:/api/v1/news/query
+2022/04/23 12:17:20.353  [I] [news.go:80]  [QueryNewsList] title: , typeStr: 1, offsetStr: 0, limitStr: 8
+2022/04/23 12:17:20.355  [D] [router.go:1272]  |      127.0.0.1|[42m 200 [0m|     1.6913ms|   match|[44m GET     [0m /api/v1/news/query   r:/api/v1/news/query
+2022/04/23 12:17:25.975  [I] [news.go:80]  [QueryNewsList] title: , typeStr: 1, offsetStr: 0, limitStr: 8
+2022/04/23 12:17:25.979  [D] [router.go:1272]  |      127.0.0.1|[42m 200 [0m|     3.8533ms|   match|[44m GET     [0m /api/v1/news/query   r:/api/v1/news/query
+2022/04/23 12:17:29.899  [I] [news.go:80]  [QueryNewsList] title: , typeStr: 1, offsetStr: 0, limitStr: 8
+2022/04/23 12:17:29.901  [D] [router.go:1272]  |      127.0.0.1|[42m 200 [0m|     2.1961ms|   match|[44m GET     [0m /api/v1/news/query   r:/api/v1/news/query
+2022/04/23 12:20:06.670  [I] [news.go:80]  [QueryNewsList] title: , typeStr: 1, offsetStr: 0, limitStr: 8
+2022/04/23 12:20:06.672  [D] [router.go:1272]  |      127.0.0.1|[42m 200 [0m|      1.675ms|   match|[44m GET     [0m /api/v1/news/query   r:/api/v1/news/query
+2022/04/23 12:20:12.110  [I] [news.go:80]  [QueryNewsList] title: , typeStr: 2, offsetStr: 0, limitStr: 8
+2022/04/23 12:20:12.112  [D] [router.go:1272]  |      127.0.0.1|[42m 200 [0m|     2.9164ms|   match|[44m GET     [0m /api/v1/news/query   r:/api/v1/news/query
+2022/04/23 12:20:14.465  [I] [news.go:80]  [QueryNewsList] title: , typeStr: 3, offsetStr: 0, limitStr: 8
+2022/04/23 12:20:14.467  [D] [router.go:1272]  |      127.0.0.1|[42m 200 [0m|     1.1742ms|   match|[44m GET     [0m /api/v1/news/query   r:/api/v1/news/query
+2022/04/23 12:20:15.749  [I] [resources.go:48]  [QueryResourcesList] prefix: , limit: 100
+2022/04/23 12:20:16.179  [E] [resources.go:63]  [QueryResourcesList] bizresources.QueryResourcesList, err: oss: service returned error: StatusCode=400, ErrorCode=InvalidArgument, ErrorMessage="Authorization header is invalid.", RequestId=62637E80224F9637335F2053, prefix: , limit: 100
+
+2022/04/23 12:22:48.498  [I] [server.go:238]  http server Running on http://:8080
+2022/04/23 12:23:02.712  [I] [server.go:238]  http server Running on http://:8080
+2022/04/23 12:26:16.909  [I] [news.go:80]  [QueryNewsList] title: , typeStr: 2, offsetStr: 0, limitStr: 8
+2022/04/23 12:26:18.250  [D] [router.go:1272]  |      127.0.0.1|[42m 200 [0m|    1.340472s|   match|[44m GET     [0m /api/v1/news/query   r:/api/v1/news/query
+2022/04/23 12:26:18.915  [I] [resources.go:48]  [QueryResourcesList] prefix: , limit: 100
+2022/04/23 12:26:19.026  [E] [resources.go:63]  [QueryResourcesList] bizresources.QueryResourcesList, err: oss: service returned error: StatusCode=400, ErrorCode=InvalidArgument, ErrorMessage="Authorization header is invalid.", RequestId=62637FEB99F00D32328D89E2, prefix: , limit: 100
+
+2022/04/23 12:27:05.853  [I] [server.go:238]  http server Running on http://:8080
+2022/04/23 12:28:18.127  [I] [server.go:238]  http server Running on http://:8080
+2022/04/23 12:29:43.026  [I] [news.go:80]  [QueryNewsList] title: , typeStr: 1, offsetStr: 0, limitStr: 8
+2022/04/23 12:29:43.124  [D] [router.go:1272]  |      127.0.0.1|[42m 200 [0m|    98.0795ms|   match|[44m GET     [0m /api/v1/news/query   r:/api/v1/news/query
+2022/04/23 12:29:46.472  [D] [router.go:1272]  |      127.0.0.1|[42m 200 [0m|   108.1269ms|   match|[44m GET     [0m /api/v1/user/query   r:/api/v1/user/query
+2022/04/23 12:29:48.047  [I] [resources.go:48]  [QueryResourcesList] prefix: , limit: 100
+2022/04/23 12:29:48.203  [D] [router.go:1272]  |      127.0.0.1|[42m 200 [0m|    155.532ms|   match|[44m GET     [0m /api/v1/resources/query   r:/api/v1/resources/query
+2022/04/23 12:29:50.957  [I] [news.go:80]  [QueryNewsList] title: , typeStr: 3, offsetStr: 0, limitStr: 8
+2022/04/23 12:29:50.959  [D] [router.go:1272]  |      127.0.0.1|[42m 200 [0m|     2.0752ms|   match|[44m GET     [0m /api/v1/news/query   r:/api/v1/news/query
+2022/04/23 12:29:51.206  [I] [news.go:80]  [QueryNewsList] title: , typeStr: 2, offsetStr: 0, limitStr: 8
+2022/04/23 12:29:51.209  [D] [router.go:1272]  |      127.0.0.1|[42m 200 [0m|     3.1538ms|   match|[44m GET     [0m /api/v1/news/query   r:/api/v1/news/query
+2022/04/23 12:29:51.722  [I] [news.go:80]  [QueryNewsList] title: , typeStr: 1, offsetStr: 0, limitStr: 8
+2022/04/23 12:29:51.748  [D] [router.go:1272]  |      127.0.0.1|[42m 200 [0m|    26.8252ms|   match|[44m GET     [0m /api/v1/news/query   r:/api/v1/news/query
+2022/04/23 12:29:53.039  [D] [router.go:1272]  |      127.0.0.1|[42m 200 [0m|     6.5577ms|   match|[44m GET     [0m /api/v1/user/query   r:/api/v1/user/query
+2022/04/23 12:30:33.046  [D] [router.go:1272]  |      127.0.0.1|[42m 200 [0m|     2.2675ms|   match|[44m GET     [0m /api/v1/user/query   r:/api/v1/user/query
+2022/04/23 12:30:37.197  [D] [router.go:1272]  |      127.0.0.1|[42m 200 [0m|    37.7474ms|   match|[44m GET     [0m /api/v1/user/query   r:/api/v1/user/query
+2022/04/23 12:36:19.221  [I] [login.go:30]  [Login] u.Ctx.Input.RequestBody: {"number":"A19180124","password":"a1234567"}
+
+2022/04/23 12:36:19.221  [I] [login.go:31]  [Login] req: {A19180124 a1234567}
+
+2022/04/23 12:36:19.273  [E] [redis.go:58]  [GetInt64] redisCache.Get, err: redis: nil, key: datastructLearningWeb:login:user_id 3
+2022/04/23 12:36:19.274  [E] [login.go:35]  [Login] bizuser.Login, err: 账号或密码错误, number: A19180124
+2022/04/23 12:36:21.635  [I] [login.go:30]  [Login] u.Ctx.Input.RequestBody: {"number":"A19180124","password":"a12345678"}
+
+2022/04/23 12:36:21.635  [I] [login.go:31]  [Login] req: {A19180124 a12345678}
+
+2022/04/23 12:36:21.636  [E] [redis.go:58]  [GetInt64] redisCache.Get, err: redis: nil, key: datastructLearningWeb:login:user_id 3
+2022/04/23 12:36:21.636  [D] [router.go:1272]  |      127.0.0.1|[42m 200 [0m|     1.2861ms|   match|[46m POST    [0m /api/v1/login   r:/api/v1/login/
+2022/04/23 12:36:21.968  [I] [user.go:59]  urlArr: [ api v1 user get_info], len: 5
+2022/04/23 12:36:21.969  [D] [router.go:1272]  |      127.0.0.1|[42m 200 [0m|     2.0999ms|   match|[44m GET     [0m /api/v1/user/get_info   r:/api/v1/user/get_info
+2022/04/23 12:36:22.235  [I] [news.go:80]  [QueryNewsList] title: , typeStr: 1, offsetStr: 0, limitStr: 8
+2022/04/23 12:36:22.274  [D] [router.go:1272]  |      127.0.0.1|[42m 200 [0m|    39.2462ms|   match|[44m GET     [0m /api/v1/news/query   r:/api/v1/news/query
+2022/04/23 12:36:38.421  [I] [news.go:80]  [QueryNewsList] title: 上, typeStr: 1, offsetStr: 0, limitStr: 8
+2022/04/23 12:36:38.495  [D] [router.go:1272]  |      127.0.0.1|[42m 200 [0m|    73.9095ms|   match|[44m GET     [0m /api/v1/news/query   r:/api/v1/news/query
+2022/04/23 12:37:19.358  [I] [news.go:80]  [QueryNewsList] title: , typeStr: 1, offsetStr: 0, limitStr: 8
+2022/04/23 12:37:19.360  [D] [router.go:1272]  |      127.0.0.1|[42m 200 [0m|     2.0811ms|   match|[44m GET     [0m /api/v1/news/query   r:/api/v1/news/query
+2022/04/23 12:37:20.640  [I] [news.go:80]  [QueryNewsList] title: , typeStr: 1, offsetStr: 0, limitStr: 8
+2022/04/23 12:37:20.643  [D] [router.go:1272]  |      127.0.0.1|[42m 200 [0m|     2.1682ms|   match|[44m GET     [0m /api/v1/news/query   r:/api/v1/news/query
+2022/04/23 12:37:24.593  [I] [news.go:80]  [QueryNewsList] title: , typeStr: 2, offsetStr: 0, limitStr: 8
+2022/04/23 12:37:24.596  [D] [router.go:1272]  |      127.0.0.1|[42m 200 [0m|     2.5886ms|   match|[44m GET     [0m /api/v1/news/query   r:/api/v1/news/query
+2022/04/23 12:37:31.482  [I] [news.go:80]  [QueryNewsList] title: 什么, typeStr: 2, offsetStr: 0, limitStr: 8
+2022/04/23 12:37:31.486  [D] [router.go:1272]  |      127.0.0.1|[42m 200 [0m|     3.7869ms|   match|[44m GET     [0m /api/v1/news/query   r:/api/v1/news/query
+2022/04/23 12:38:08.078  [I] [news.go:80]  [QueryNewsList] title: , typeStr: 2, offsetStr: 0, limitStr: 8
+2022/04/23 12:38:08.081  [D] [router.go:1272]  |      127.0.0.1|[42m 200 [0m|     2.7105ms|   match|[44m GET     [0m /api/v1/news/query   r:/api/v1/news/query
+2022/04/23 12:39:15.618  [I] [news.go:80]  [QueryNewsList] title: , typeStr: 2, offsetStr: 0, limitStr: 8
+2022/04/23 12:39:15.663  [D] [router.go:1272]  |      127.0.0.1|[42m 200 [0m|    44.8038ms|   match|[44m GET     [0m /api/v1/news/query   r:/api/v1/news/query
+2022/04/23 12:39:19.177  [I] [news.go:80]  [QueryNewsList] title: , typeStr: 2, offsetStr: 0, limitStr: 8
+2022/04/23 12:39:19.180  [D] [router.go:1272]  |      127.0.0.1|[42m 200 [0m|     3.2588ms|   match|[44m GET     [0m /api/v1/news/query   r:/api/v1/news/query
+2022/04/23 12:39:20.752  [I] [news.go:80]  [QueryNewsList] title: , typeStr: 2, offsetStr: 0, limitStr: 8
+2022/04/23 12:39:20.756  [D] [router.go:1272]  |      127.0.0.1|[42m 200 [0m|     4.3018ms|   match|[44m GET     [0m /api/v1/news/query   r:/api/v1/news/query
+2022/04/23 12:39:24.232  [I] [news.go:80]  [QueryNewsList] title: , typeStr: 2, offsetStr: 0, limitStr: 8
+2022/04/23 12:39:24.239  [D] [router.go:1272]  |      127.0.0.1|[42m 200 [0m|     6.5972ms|   match|[44m GET     [0m /api/v1/news/query   r:/api/v1/news/query
+2022/04/23 12:39:44.137  [I] [news.go:80]  [QueryNewsList] title: sd, typeStr: 2, offsetStr: 0, limitStr: 8
+2022/04/23 12:39:44.138  [D] [router.go:1272]  |      127.0.0.1|[42m 200 [0m|     1.5752ms|   match|[44m GET     [0m /api/v1/news/query   r:/api/v1/news/query
+2022/04/23 12:39:48.438  [I] [news.go:80]  [QueryNewsList] title: sdm, typeStr: 2, offsetStr: 0, limitStr: 8
+2022/04/23 12:39:48.440  [D] [router.go:1272]  |      127.0.0.1|[42m 200 [0m|     2.3225ms|   match|[44m GET     [0m /api/v1/news/query   r:/api/v1/news/query
+2022/04/23 12:49:02.629  [I] [news.go:80]  [QueryNewsList] title: , typeStr: 2, offsetStr: 0, limitStr: 8
+2022/04/23 12:49:02.633  [D] [router.go:1272]  |      127.0.0.1|[42m 200 [0m|     3.9826ms|   match|[44m GET     [0m /api/v1/news/query   r:/api/v1/news/query
+2022/04/23 12:49:31.321  [I] [news.go:80]  [QueryNewsList] title: , typeStr: 2, offsetStr: 0, limitStr: 8
+2022/04/23 12:49:31.325  [D] [router.go:1272]  |      127.0.0.1|[42m 200 [0m|     3.2363ms|   match|[44m GET     [0m /api/v1/news/query   r:/api/v1/news/query
+2022/04/23 12:51:34.731  [I] [news.go:80]  [QueryNewsList] title: , typeStr: 2, offsetStr: 0, limitStr: 8
+2022/04/23 12:51:34.733  [D] [router.go:1272]  |      127.0.0.1|[42m 200 [0m|     2.2114ms|   match|[44m GET     [0m /api/v1/news/query   r:/api/v1/news/query
+2022/04/23 12:51:55.950  [I] [news.go:80]  [QueryNewsList] title: , typeStr: 2, offsetStr: 0, limitStr: 10
+2022/04/23 12:51:56.006  [D] [router.go:1272]  |      127.0.0.1|[42m 200 [0m|    56.4922ms|   match|[44m GET     [0m /api/v1/news/query   r:/api/v1/news/query
+2022/04/23 12:51:56.793  [I] [resources.go:48]  [QueryResourcesList] prefix: , limit: 100
+2022/04/23 12:51:56.990  [D] [router.go:1272]  |      127.0.0.1|[42m 200 [0m|   197.8516ms|   match|[44m GET     [0m /api/v1/resources/query   r:/api/v1/resources/query
+2022/04/23 12:51:57.794  [I] [news.go:80]  [QueryNewsList] title: , typeStr: 3, offsetStr: 0, limitStr: 8
+2022/04/23 12:51:57.799  [D] [router.go:1272]  |      127.0.0.1|[42m 200 [0m|     5.4874ms|   match|[44m GET     [0m /api/v1/news/query   r:/api/v1/news/query
+2022/04/23 12:51:58.357  [I] [news.go:80]  [QueryNewsList] title: , typeStr: 2, offsetStr: 0, limitStr: 8
+2022/04/23 12:51:58.360  [D] [router.go:1272]  |      127.0.0.1|[42m 200 [0m|     3.1114ms|   match|[44m GET     [0m /api/v1/news/query   r:/api/v1/news/query
+2022/04/23 12:51:59.697  [I] [news.go:80]  [QueryNewsList] title: , typeStr: 1, offsetStr: 0, limitStr: 8
+2022/04/23 12:51:59.698  [D] [router.go:1272]  |      127.0.0.1|[42m 200 [0m|     1.6134ms|   match|[44m GET     [0m /api/v1/news/query   r:/api/v1/news/query
+2022/04/23 12:52:07.730  [I] [news.go:80]  [QueryNewsList] title: 上, typeStr: 1, offsetStr: 0, limitStr: 8
+2022/04/23 12:52:07.734  [D] [router.go:1272]  |      127.0.0.1|[42m 200 [0m|     3.9802ms|   match|[44m GET     [0m /api/v1/news/query   r:/api/v1/news/query
+2022/04/23 15:55:05.965  [I] [server.go:238]  http server Running on http://:8080
+2022/04/23 15:55:06.915  [I] [server.go:238]  http server Running on http://:8080
+2022/04/23 15:55:07.927  [I] [server.go:238]  http server Running on http://:8080
+2022/04/23 15:55:09.438  [I] [server.go:238]  http server Running on http://:8080
+2022/04/23 15:55:10.943  [I] [server.go:238]  http server Running on http://:8080
+2022/04/23 15:55:12.446  [I] [server.go:238]  http server Running on http://:8080
+2022/04/23 15:55:13.927  [I] [server.go:238]  http server Running on http://:8080
+2022/04/23 15:55:15.420  [I] [server.go:238]  http server Running on http://:8080
+2022/04/23 15:55:16.862  [I] [server.go:238]  http server Running on http://:8080
+2022/04/23 15:55:18.296  [I] [server.go:238]  http server Running on http://:8080
+2022/04/23 15:55:19.789  [I] [server.go:238]  http server Running on http://:8080
+2022/04/23 15:55:21.296  [I] [server.go:238]  http server Running on http://:8080
+2022/04/23 15:55:22.826  [I] [server.go:238]  http server Running on http://:8080
+2022/04/23 15:55:24.404  [I] [server.go:238]  http server Running on http://:8080
+2022/04/23 15:55:25.878  [I] [server.go:238]  http server Running on http://:8080
+2022/04/23 15:55:27.341  [I] [server.go:238]  http server Running on http://:8080
+2022/04/23 15:55:28.951  [I] [server.go:238]  http server Running on http://:8080
+2022/04/23 15:55:30.512  [I] [server.go:238]  http server Running on http://:8080
+2022/04/23 15:55:32.100  [I] [server.go:238]  http server Running on http://:8080
+2022/04/23 15:55:33.525  [I] [server.go:238]  http server Running on http://:8080
+2022/04/23 15:55:34.992  [I] [server.go:238]  http server Running on http://:8080
+2022/04/23 15:55:43.274  [I] [server.go:238]  http server Running on http://:8080
+2022/04/23 15:56:55.131  [I] [news.go:80]  [QueryNewsList] title: , typeStr: 1, offsetStr: 0, limitStr: 8
+2022/04/23 15:56:55.416  [D] [router.go:1272]  |      127.0.0.1|[42m 200 [0m|   284.8603ms|   match|[44m GET     [0m /api/v1/news/query   r:/api/v1/news/query
+2022/04/23 15:56:58.336  [I] [news.go:80]  [QueryNewsList] title: , typeStr: 3, offsetStr: 0, limitStr: 8
+2022/04/23 15:56:58.337  [D] [router.go:1272]  |      127.0.0.1|[42m 200 [0m|     1.7271ms|   match|[44m GET     [0m /api/v1/news/query   r:/api/v1/news/query
+2022/04/23 16:05:29.552  [I] [news.go:80]  [QueryNewsList] title: , typeStr: 1, offsetStr: 0, limitStr: 8
+2022/04/23 16:05:29.553  [D] [router.go:1272]  |      127.0.0.1|[42m 200 [0m|     2.0944ms|   match|[44m GET     [0m /api/v1/news/query   r:/api/v1/news/query
+2022/04/23 16:05:30.787  [I] [resources.go:48]  [QueryResourcesList] prefix: , limit: 100
+2022/04/23 16:05:30.896  [D] [router.go:1272]  |      127.0.0.1|[42m 200 [0m|   109.1467ms|   match|[44m GET     [0m /api/v1/resources/query   r:/api/v1/resources/query
+2022/04/23 16:05:49.918  [I] [login.go:30]  [Login] u.Ctx.Input.RequestBody: {"number":"A19180123","password":"180123"}
+
+2022/04/23 16:05:49.918  [I] [login.go:31]  [Login] req: {A19180123 180123}
+
+2022/04/23 16:05:49.965  [E] [redis.go:58]  [GetInt64] redisCache.Get, err: redis: nil, key: datastructLearningWeb:login:user_id 1
+2022/04/23 16:05:49.966  [D] [router.go:1272]  |      127.0.0.1|[42m 200 [0m|    47.9899ms|   match|[46m POST    [0m /api/v1/login   r:/api/v1/login/
+2022/04/23 16:05:50.206  [D] [router.go:1272]  |      127.0.0.1|[42m 200 [0m|    29.3042ms|   match|[44m GET     [0m /api/v1/user/get_info   r:/api/v1/user/get_info
+2022/04/23 16:05:50.300  [I] [news.go:80]  [QueryNewsList] title: , typeStr: 1, offsetStr: 0, limitStr: 8
+2022/04/23 16:05:50.338  [D] [router.go:1272]  |      127.0.0.1|[42m 200 [0m|    37.4108ms|   match|[44m GET     [0m /api/v1/news/query   r:/api/v1/news/query
+2022/04/23 16:08:02.534  [I] [news.go:80]  [QueryNewsList] title: , typeStr: 1, offsetStr: 0, limitStr: 8
+2022/04/23 16:08:02.540  [D] [router.go:1272]  |      127.0.0.1|[42m 200 [0m|     5.9892ms|   match|[44m GET     [0m /api/v1/news/query   r:/api/v1/news/query
+2022/04/23 16:08:13.542  [I] [news.go:80]  [QueryNewsList] title: , typeStr: 1, offsetStr: 0, limitStr: 8
+2022/04/23 16:08:13.549  [D] [router.go:1272]  |      127.0.0.1|[42m 200 [0m|     6.9823ms|   match|[44m GET     [0m /api/v1/news/query   r:/api/v1/news/query
+2022/04/30 15:06:49.606  [I] [server.go:238]  http server Running on http://:8080
+2022/04/30 15:07:56.322  [D] [router.go:1272]  |      127.0.0.1|[43m 404 [0m|      520.1µs| nomatch|[44m GET     [0m /  
+2022/04/30 15:07:57.682  [D] [router.go:1272]  |      127.0.0.1|[43m 404 [0m|       1.43ms| nomatch|[44m GET     [0m /favicon.ico
+2022/04/30 15:09:42.612  [I] [news.go:80]  [QueryNewsList] title: , typeStr: 1, offsetStr: 0, limitStr: 8
+2022/04/30 15:09:42.619  [E] [news.go:125]  [QueryNewsList] biznews.QueryNewsList, err: Error 1054: Unknown column 'T0.user_id' in 'field list', bizReq: {"title":"","type":1,"offset":0,"limit":8}
+
+2022/04/30 15:14:11.314  [I] [news.go:80]  [QueryNewsList] title: , typeStr: 1, offsetStr: 0, limitStr: 8
+2022/04/30 15:14:11.318  [E] [news.go:125]  [QueryNewsList] biznews.QueryNewsList, err: Error 1054: Unknown column 'T0.user_id' in 'field list', bizReq: {"title":"","type":1,"offset":0,"limit":8}
+
+2022/04/30 15:14:19.443  [D] [router.go:1272]  |      127.0.0.1|[42m 200 [0m|     4.6447ms|   match|[44m GET     [0m /api/v1/user/query   r:/api/v1/user/query
+2022/04/30 15:14:33.537  [I] [user.go:188]  [UpdateUser] u.Ctx.Input.RequestBody: {"id":1,"username":"admin","number":"A1918012","password":"","status":0,"create_news":1,"is_del":0,"is_admin":1}
+
+2022/04/30 15:14:33.537  [I] [user.go:189]  [UpdateUser] req: {1 admin A1918012  0 1 0 1 1}
+
+2022/04/30 15:14:33.539  [E] [user.go:192]  [UpdateUser] bizuser.UpdateUser, err: 该用户是管理员，不可修改
+
+2022/04/30 15:14:43.224  [I] [user.go:106]  [AddUser] u.Ctx.Input.RequestBody: {"username":"test","number":"test","password":"test"}
+
+2022/04/30 15:14:43.224  [I] [user.go:107]  [AddUser] req: {1 test test test 0 0 0}
+
+2022/04/30 15:14:43.315  [D] [router.go:1272]  |      127.0.0.1|[42m 200 [0m|    91.5435ms|   match|[46m POST    [0m /api/v1/user/add   r:/api/v1/user/add
+2022/04/30 15:14:43.657  [D] [router.go:1272]  |      127.0.0.1|[42m 200 [0m|     7.2368ms|   match|[44m GET     [0m /api/v1/user/query   r:/api/v1/user/query
+2022/04/30 15:14:52.590  [I] [user.go:188]  [UpdateUser] u.Ctx.Input.RequestBody: {"id":2,"username":"test","number":"tes","password":"","status":0,"create_news":0,"is_del":0,"is_admin":0}
+
+2022/04/30 15:14:52.590  [I] [user.go:189]  [UpdateUser] req: {2 test tes  0 0 0 0 1}
+
+2022/04/30 15:14:52.628  [D] [router.go:1272]  |      127.0.0.1|[42m 200 [0m|    38.1643ms|   match|[46m POST    [0m /api/v1/user/update   r:/api/v1/user/update
+2022/04/30 15:14:52.958  [D] [router.go:1272]  |      127.0.0.1|[42m 200 [0m|     7.0639ms|   match|[44m GET     [0m /api/v1/user/query   r:/api/v1/user/query
+2022/04/30 15:17:08.229  [I] [server.go:238]  http server Running on http://:8080
+2022/04/30 15:17:12.954  [I] [server.go:238]  http server Running on http://:8080
+2022/04/30 15:17:14.127  [I] [server.go:238]  http server Running on http://:8080
+2022/04/30 15:17:15.792  [I] [server.go:238]  http server Running on http://:8080
+2022/04/30 15:17:17.292  [I] [server.go:238]  http server Running on http://:8080
+2022/04/30 15:17:18.769  [I] [server.go:238]  http server Running on http://:8080
+2022/04/30 15:17:20.897  [I] [server.go:238]  http server Running on http://:8080
+2022/04/30 15:17:23.136  [I] [server.go:238]  http server Running on http://:8080
+2022/04/30 15:17:25.478  [I] [server.go:238]  http server Running on http://:8080
+2022/04/30 15:17:27.116  [I] [server.go:238]  http server Running on http://:8080
+2022/04/30 15:17:28.624  [I] [server.go:238]  http server Running on http://:8080
+2022/04/30 15:17:36.864  [I] [server.go:238]  http server Running on http://:8080
+2022/04/30 15:17:50.100  [I] [user.go:188]  [UpdateUser] u.Ctx.Input.RequestBody: {"id":2,"username":"test","number":"tes","password":"","status":0,"create_news":0,"is_del":0,"is_admin":0}
+
+2022/04/30 15:17:50.100  [I] [user.go:189]  [UpdateUser] req: {2 test tes  0 0 0 0 1}
+
+2022/04/30 15:17:50.150  [D] [router.go:1272]  |      127.0.0.1|[42m 200 [0m|    51.1127ms|   match|[46m POST    [0m /api/v1/user/update   r:/api/v1/user/update
+2022/04/30 15:17:50.364  [D] [router.go:1272]  |      127.0.0.1|[42m 200 [0m|     5.3617ms|   match|[44m GET     [0m /api/v1/user/query   r:/api/v1/user/query
+2022/04/30 15:18:02.751  [I] [user.go:188]  [UpdateUser] u.Ctx.Input.RequestBody: {"id":2,"username":"test","number":"test","password":"1234567","status":0,"create_news":0,"is_del":0,"is_admin":0}
+
+2022/04/30 15:18:02.751  [I] [user.go:189]  [UpdateUser] req: {2 test test 1234567 0 0 0 0 1}
+
+2022/04/30 15:18:02.843  [D] [router.go:1272]  |      127.0.0.1|[42m 200 [0m|    93.0531ms|   match|[46m POST    [0m /api/v1/user/update   r:/api/v1/user/update
+2022/04/30 15:18:03.187  [D] [router.go:1272]  |      127.0.0.1|[42m 200 [0m|     3.2432ms|   match|[44m GET     [0m /api/v1/user/query   r:/api/v1/user/query
